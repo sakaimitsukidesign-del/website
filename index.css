@@ -182,3 +182,43 @@ footer .footer-copy {
   font-size: 9.5px;
   letter-spacing: 0.2em;
 }
+
+/* ── RESPONSIVE (スマホ) ── */
+@media (max-width: 600px) {
+ 
+  /* ヘッダー：余白を縮小 */
+  header {
+    padding: 14px 20px;
+  }
+ 
+  .logo-img {
+    height: 38px;
+  }
+ 
+  .logo-text .ja {
+    font-size: 13px;
+  }
+ 
+  .logo-text .en {
+    font-size: 8px;
+  }
+ 
+  /* ナビ：6項目を2行×3列のグリッドに */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+ 
+  nav a {
+    padding: 12px 4px;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-align: center;
+    border-bottom: 0.5px solid rgba(255,255,255,0.2);
+  }
+ 
+  /* 区切り線はグリッドでは不要 */
+  nav a::after {
+    display: none;
+  }
+}
