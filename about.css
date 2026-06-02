@@ -91,7 +91,7 @@ nav a.active { background: rgba(0,0,0,0.15); }
 
 /* 写真 */
 .about-photo img {
-  width: 80%;
+  width: 90%;
   height: auto;
   display: block;
 }
