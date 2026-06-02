@@ -238,6 +238,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 0;
+    background: var(--white); 
   }
 
   .drawer-nav a {
