@@ -95,6 +95,11 @@ nav a:last-child::after { display: none; }
 
 nav a:hover { background: rgba(0,0,0,0.12); }
 
+/* ── ハンバーガー・ドロワー（デスクトップでは非表示） ── */
+.hamburger { display: none; }
+.drawer { display: none; }
+.drawer-overlay { display: none; }
+
 /* ── HERO ── */
 .hero {
   min-height: 560px;
@@ -161,16 +166,15 @@ footer {
   background: var(--orange);
   color: var(--white);
   text-align: center;
-  padding: 28px 48px;
-  font-size: 10px;
+  padding: 10px 48px;
+  font-size: 7px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   font-weight: 300;
 }
 
 footer .footer-logo {
-  
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.25em;
   margin-bottom: 8px;
@@ -179,46 +183,114 @@ footer .footer-logo {
 
 footer .footer-copy {
   opacity: 0.65;
-  font-size: 9.5px;
+  font-size: 7px;
   letter-spacing: 0.2em;
 }
 
 /* ── RESPONSIVE (スマホ) ── */
 @media (max-width: 600px) {
- 
-  /* ヘッダー：余白を縮小 */
+
   header {
     padding: 14px 20px;
+    justify-content: space-between;
   }
- 
+
   .logo-img {
     height: 38px;
   }
- 
+
   .logo-text .ja {
     font-size: 13px;
   }
- 
+
   .logo-text .en {
     font-size: 8px;
   }
- 
-  /* ナビ：6項目を2行×3列のグリッドに */
-  nav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
- 
-  nav a {
-    padding: 12px 4px;
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-align: center;
-    border-bottom: 0.5px solid rgba(255,255,255,0.2);
-  }
- 
-  /* 区切り線はグリッドでは不要 */
-  nav a::after {
+
+  /* デスクトップナビを非表示 */
+  #global-nav {
     display: none;
+  }
+
+  /* ハンバーガーボタン */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--orange);
+  }
+
+  /* ドロワー本体 */
+  .drawer {
+    display: block;
+    position: fixed;
+    top: 0; right: -100%;
+    width: 65%;
+    height: 100%;
+    background: var(--white);
+    z-index: 200;
+    transition: right 0.3s ease;
+    padding: 60px 32px 40px;
+  }
+
+  .drawer.open {
+    right: 0;
+  }
+
+  .drawer-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--orange);
+    cursor: pointer;
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .drawer-nav a {
+    display: block;
+    padding: 16px 0;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 0.5px solid #ececec;
+  }
+
+  /* オーバーレイ */
+  .drawer-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
