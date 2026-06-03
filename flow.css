@@ -1,0 +1,390 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange: #d4521a;
+  --orange-light: #e06030;
+  --white: #ffffff;
+  --off-white: #fafafa;
+  --ink: #1a1a1a;
+  --gray: #888;
+}
+
+body {
+  font-family: 'Jost', 'Noto Sans JP', sans-serif;
+  background: var(--off-white);
+  color: var(--ink);
+  font-weight: 300;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--white);
+  padding: 18px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ececec;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 52px;
+  width: auto;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--orange);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  position: sticky;
+  top: 89px; /* ヘッダーの高さに合わせる */
+  z-index: 90;
+}
+
+nav a {
+  display: inline-block;
+  padding: 14px 44px;
+  font-family: 'Jost', sans-serif;
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  position: relative;
+  transition: background 0.2s;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 25%; bottom: 25%;
+  width: 0.5px;
+  background: rgba(255,255,255,0.35);
+}
+
+nav a:last-child::after { display: none; }
+nav a:hover { background: rgba(0,0,0,0.12); }
+
+/* ── ハンバーガー・ドロワー（デスクトップでは非表示） ── */
+.hamburger { display: none; }
+.drawer { display: none; }
+.drawer-overlay { display: none; }
+
+
+/* ── FLOW CONTENTS AREA ── */
+.flow-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 90px 48px 120px;
+  background: var(--white);
+}
+
+.flow-title {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  margin-bottom: 72px;
+  text-align: left;
+}
+
+/* タイムライン全体のコンテナ */
+.flow-timeline {
+  position: relative;
+  margin-left: 64px; /* 見出しの開始位置に合わせるための余白 */
+}
+
+/* 縦の直線（1歩目〜6歩目の中心を繋ぐ） */
+.flow-timeline::before {
+  content: '';
+  position: absolute;
+  left: 35px; /* 円の直径70pxの中心 */
+  top: 35px;  /* 1番目の円の中心から開始 */
+  bottom: 35px; /* 最後の円の中心で終了 */
+  width: 1px;
+  background: var(--orange);
+  opacity: 0.6;
+}
+
+/* 各ステップのブロック */
+.flow-step {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 64px;
+}
+
+.flow-step:last-child {
+  margin-bottom: 0;
+}
+
+/* ナンバリング円のラッパー */
+.step-number-wrap {
+  flex: 0 0 120px;
+  position: relative;
+  z-index: 2; /* 縦線より前面に表示 */
+}
+
+/* 円の装飾（イラレ通り1pt丸筆のイメージを再現） */
+.step-circle {
+  width: 70px;
+  height: 70px;
+  border: 1px solid var(--orange);
+  background: var(--white);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+.step-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+}
+
+.step-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--orange);
+}
+
+/* 各ステップのテキスト部分 */
+.flow-content {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.flow-content h3 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--orange);
+}
+
+.flow-content p {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12.5px;
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  color: #444;
+}
+
+
+/* ── FOOTER ── */
+footer {
+  background: var(--orange);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 48px;
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 300;
+  position: relative;
+}
+
+.footer-sns {
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+ 
+.footer-sns a {
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+ 
+.footer-sns a:hover { opacity: 1; }
+.footer-sns img { height: 22px; width: auto; }
+
+footer .footer-logo {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+footer .footer-copy {
+  opacity: 0.65;
+  font-size: 7px;
+  letter-spacing: 0.2em;
+}
+
+/* お問い合わせ文章内のリンク装飾（オレンジ） */
+.flow-content .flow-link {
+  color: var(--orange);
+  text-decoration: none; /* 下線を消す */
+  font-weight: 500; /* 少しだけ太くしてリンクだと分かりやすく */
+  transition: color 0.3s;
+}
+
+.flow-content .flow-link:hover {
+  color: var(--orange-light); /* ホバー時に少し明るいオレンジに */
+  text-decoration: underline; /* ホバー時のみ下線を表示 */
+}
+
+
+/* ── RESPONSIVE (スマホ幅 600px以下) ── */
+@media (max-width: 600px) {
+  header {
+    padding: 14px 24px;
+    top: 0;
+  }
+
+  .logo-img { height: 38px; }
+
+  /* デスクトップナビを非表示 */
+  #global-nav { display: none; }
+
+  /* ハンバーガーボタン */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--orange);
+  }
+
+  /* ドロワー本体 */
+  .drawer {
+    display: block;
+    position: fixed;
+    top: 0; right: -100%;
+    width: 65%;
+    height: 100%;
+    background: var(--white);
+    z-index: 200;
+    transition: right 0.3s ease;
+    padding: 60px 32px 40px;
+  }
+
+  .drawer.open { right: 0; }
+
+  .drawer-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--orange);
+    cursor: pointer;
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--white); 
+  }
+
+  .drawer-nav a {
+    display: block;
+    padding: 16px 0;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 0.5px solid #ececec;
+  }
+
+  /* オーバーレイ */
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .drawer-overlay.open {
+    display: block;
+    opacity: 1;
+  }
+
+  /* FLOW CONTENTS RESPONSIVE */
+  .flow-container {
+    padding: 50px 24px 80px;
+  }
+  
+  .flow-title {
+    margin-bottom: 40px;
+  }
+
+  .flow-timeline {
+    margin-left: 0; /* スマホでは左端に寄せる */
+  }
+
+  .flow-timeline::before {
+    left: 25px; /* 円が小さくなる(50px)ので中心を25pxに調整 */
+    top: 25px;
+    bottom: 25px;
+  }
+
+  .flow-step {
+    margin-bottom: 40px;
+  }
+
+  .step-number-wrap {
+    flex: 0 0 65px; /* 円の幅に合わせて余白を縮小 */
+  }
+
+  .step-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .step-label { font-size: 7px; }
+  .step-num { font-size: 14px; }
+
+  .flow-content { padding-left: 12px; }
+  .flow-content h3 { font-size: 14px; margin-bottom: 6px; }
+  .flow-content p { font-size: 11.5px; line-height: 1.7; }
+
+  /* FOOTER RESPONSIVE */
+  .footer-sns { left: 20px; }
+  .footer-sns img { height: 18px; }
+}
