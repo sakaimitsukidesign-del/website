@@ -62,9 +62,7 @@
 
       <form action="https://formspree.io/f/xqejrwol" method="POST" class="contact-form" id="contact-form">
 
-         <!-- ★ Formspree 送信後リダイレクト先 -->
-        <input type="hidden" name="_next" value="https://sakaidesignatelier.com/thanks.html">
-
+         
         <!-- ★追加②：reCAPTCHAトークンを格納するhidden input -->
         <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
@@ -161,39 +159,60 @@
   </footer>
 
   <script>
-    // ハンバーガーメニュー
-    const hamburger = document.getElementById('hamburger');
-    const drawer = document.getElementById('drawer');
-    const overlay = document.getElementById('drawer-overlay');
-    const closeBtn = document.getElementById('drawer-close');
-    function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); }
-    function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
-    hamburger.addEventListener('click', openDrawer);
-    closeBtn.addEventListener('click', closeDrawer);
-    overlay.addEventListener('click', closeDrawer);
+  // ハンバーガーメニュー
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('drawer');
+  const overlay   = document.getElementById('drawer-overlay');
+  const closeBtn  = document.getElementById('drawer-close');
+  function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+  hamburger.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
 
-    // ★追加③：reCAPTCHA v3 トークン取得して送信
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = this;
-      const submitBtn = document.getElementById('submit-btn');
-      submitBtn.disabled = true;
-      submitBtn.textContent = '送信中...';
+  // フォーム送信
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form      = this;
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.disabled    = true;
+    submitBtn.textContent = '送信中...';
 
-      grecaptcha.ready(function() {
-        grecaptcha.execute('6Le0MAktAAAAAFEkKLEzlhDyUS1bOCrPfBWBFE8f', { action: 'contact' })
-          .then(function(token) {
-            document.getElementById('g-recaptcha-response').value = token;
-            form.submit();
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6Le0MAktAAAAAFEkKLEzlhDyUS1bOCrPfBWBFE8f', { action: 'contact' })
+        .then(function(token) {
+          document.getElementById('g-recaptcha-response').value = token;
+
+          // ★ form.submit() → fetch に変更
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(function(response) {
+            if (response.ok) {
+              // 送信成功 → thanksページへ
+              window.location.href = 'thanks.html';
+            } else {
+              alert('送信に失敗しました。お手数ですが、メールにてご連絡ください。');
+              submitBtn.disabled    = false;
+              submitBtn.textContent = '送信';
+            }
           })
           .catch(function() {
-            alert('reCAPTCHAの処理に失敗しました。ページを再読み込みしてお試しください。');
-            submitBtn.disabled = false;
+            alert('通信エラーが発生しました。お手数ですが、メールにてご連絡ください。');
+            submitBtn.disabled    = false;
             submitBtn.textContent = '送信';
           });
-      });
+        })
+        .catch(function() {
+          alert('reCAPTCHAの処理に失敗しました。ページを再読み込みしてお試しください。');
+          submitBtn.disabled    = false;
+          submitBtn.textContent = '送信';
+        });
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
