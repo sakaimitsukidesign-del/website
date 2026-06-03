@@ -22,6 +22,7 @@ header {
   padding: 18px 48px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #ececec;
 }
 
@@ -102,46 +103,67 @@ nav a:hover { background: rgba(0,0,0,0.12); }
 
 /* ── HERO ── */
 .hero {
-  min-height: 560px;
   background: var(--white);
   display: flex;
   align-items: center;
+  gap: 64px;
+  padding: 72px 80px;
+}
+
+/* ── スライドショー ── */
+.hero-slideshow {
+  flex: 0 0 340px;
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+
+.hero-slideshow .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  display: flex;
+  align-items: center;
   justify-content: center;
+}
+
+.hero-slideshow .slide.active {
+  opacity: 1;
+}
+
+.hero-slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── 理念テキスト ── */
+.hero-philosophy {
+  flex: 1;
+  display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 80px 48px;
-  text-align: center;
+  gap: 16px;
 }
 
-
-
-.hero-tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
+.hero-philosophy .philosophy-lead {
+  font-family: 'Cormorant Garamond', 'Noto Sans JP', serif;
+  font-size: 20px; /* 変更したい大きさ */
   font-weight: 300;
-  letter-spacing: 0.08em;
-  color: var(--ink);
-  line-height: 1.4;
+  color: var(--orange); /* 変更したい色（例：墨黒） */
+  letter-spacing: 0.06em;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  
 }
 
-.hero-tagline em {
-  font-style: italic;
-  color: var(--orange);
-}
-
-.hero-sub {
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  color: var(--gray);
+.hero-philosophy p {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12.5px;
   font-weight: 300;
-  margin-top: 8px;
-}
-
-.hero-divider {
-  width: 40px;
-  height: 0.5px;
-  background: var(--orange);
-  margin: 12px auto 0;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  margin-top: 5px;
+  color: #444;
 }
 
 /* ── SECTIONS (準備中の各コンテンツ用プレースホルダー) ── */
@@ -152,10 +174,18 @@ nav a:hover { background: rgba(0,0,0,0.12); }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ccc;
+  color: #ccc; /* リンクになってもこの色を維持 */
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
+  text-decoration: none; /* 👇 これを追加（リンクの下線を消す） */
+}
+
+/* お問い合わせエリアにマウスを乗せたときの変化 */
+#contact.section-placeholder:hover {
+  background: #fdfaf7; /* 背景をほんのり薄いオレンジ（またはお好みで）に変える */
+  color: var(--orange); /* 文字色をブランドカラーのオレンジに変える */
+  transition: all 0.3s; /* 変化をふわっとさせる */
 }
 
 /* ── FOOTER ── */
@@ -188,9 +218,30 @@ footer .footer-copy {
 @media (max-width: 600px) {
 
   header {
-    padding: 14px 20px;
-    justify-content: space-between;
+    padding: 14px 24px; /* 上下を少し詰め、左右の余白を48pxから24pxに狭くします */
   }
+
+  .hero {
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 32px;
+  }
+
+  .hero-slideshow {
+    flex: none;
+    width: 220px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .philosophy-lead {
+    font-size: 16px;
+  }
+
+  .hero-philosophy p {
+    font-size: 12px;
+  }
+
+
 
   .logo-img {
     height: 38px;
@@ -275,20 +326,20 @@ footer .footer-copy {
     border-bottom: 0.5px solid #ececec;
   }
 
-  /* オーバーレイ */
+  /* オーバーレイ（スマホ時） */
   .drawer-overlay {
-    display: block;
+    display: none; /* 👈 initialやblockから「none」に変更して普段は完全に消す */
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.3);
     z-index: 100;
     opacity: 0;
-    pointer-events: none;
     transition: opacity 0.3s;
   }
 
+  /* ドロワーが開いたとき */
   .drawer-overlay.open {
+    display: block; /* 👈 開いたときだけ「block」にして表示する */
     opacity: 1;
-    pointer-events: auto;
   }
 }

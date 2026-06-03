@@ -46,12 +46,32 @@
   <div class="drawer-overlay" id="drawer-overlay"></div>
 
   <!-- HERO -->
-   <section class="hero">
-    <p class="hero-sub">サイト準備中　</p>
+  <section class="hero">
+    <!-- 左：スライドショー -->
+    <div class="hero-slideshow">
+      <div class="slide active"><img src="ロゴ.png"    alt="サカイデザインアトリエ"></div>
+      <div class="slide">      <img src="ロゴ-02.png" alt="サカイデザインアトリエ"></div>
+      <div class="slide">      <img src="ロゴ-04.png" alt="サカイデザインアトリエ"></div>
+      <div class="slide">      <img src="ロゴ-05.png" alt="サカイデザインアトリエ"></div>
+      <!-- 将来：works画像に差し替える際はここの img を <a href="works/xxx.html"> で囲む -->
+    </div>
+
+    <!-- 右：理念テキスト -->
+    <div class="hero-philosophy">
+      <p class="philosophy-lead">論理だけでは届かないものを、デザインする。</p>
+
+      <p>デザインには理論があります。黄金比、余白の取り方、色彩の法則。しかしデザインが、それだけで成立するとは考えていません。</p>
+
+      <p>ビジネスはマーケティングの視点から数字で動きます。しかしその前に、企業と顧客の関係は人と人との関係です。売り手の誇りや愛着、買い手の共感や安心――そういった感情に対して、理論上の「正解」がいつも最善とは限りません。</p>
+
+      <p>完璧さよりも、少しのゆらぎや個性が人の心を動かすこともあります。それこそが、その人らしさや組織らしさを伝える力になると信じています。</p>
+
+      <p>「本当の意味でのデザインとは何か」。その問いへの答えを探し続けるように、サカイデザインアトリエは売り手と買い手、その両方の声に耳を傾けながら、その人や組織らしい形を一緒に探していく伴走者でありたいと考えています。</p>
+    </div>
   </section>
 
   <!-- CONTENT PLACEHOLDERS -->
-  <div id="contact" class="section-placeholder">お問い合わせはコチラ</div>
+ <a href="contact.html" id="contact" class="section-placeholder">お問い合わせはコチラ</a>
   <div id="works"   class="section-placeholder">Works — coming soon</div>
   <div id="service" class="section-placeholder">Service — coming soon</div>
   <div id="flow"    class="section-placeholder">Flow — coming soon</div>
@@ -81,6 +101,17 @@
     hamburger.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
+  </script>
+
+  <script>
+    // スライドショー
+    const slides = document.querySelectorAll('.hero-slideshow .slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3000);
   </script>
 
 </body>
