@@ -7,6 +7,14 @@
   <link rel="icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="contact.css">
+
+  <!-- ★追加①：reCAPTCHA v3 スクリプト -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Le0MAktAAAAAFEkKLEzlhDyUS1bOCrPfBWBFE8f"></script>
+
+  <!-- reCAPTCHAバッジを非表示（プライバシーポリシーに記載済みのため） -->
+  <style>
+    .grecaptcha-badge { visibility: hidden; }
+  </style>
 </head>
 <body>
 
@@ -52,7 +60,10 @@
         <h1>お問い合わせ</h1>
       </div>
 
-      <form action="https://formspree.io/f/xqejrwol" method="POST" class="contact-form">
+      <form action="https://formspree.io/f/xqejrwol" method="POST" class="contact-form" id="contact-form">
+
+        <!-- ★追加②：reCAPTCHAトークンを格納するhidden input -->
+        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
         <div class="form-group">
           <label>お名前</label>
@@ -89,15 +100,13 @@
           <textarea name="message" rows="6" required></textarea>
         </div>
 
-    
-
         <div class="privacy-box">
           <h2>【プライバシーポリシー】</h2>
           <p>サカイデザインアトリエ（以下「当事務所」といいます）は、個人情報保護の重要性を認識し、個人情報保護に関する法令を遵守するとともに、以下のプライバシーポリシーに基づき、適切な個人情報の保護に努めます。</p>
- 
+
           <h3>1. 個人情報の取得方法</h3>
           <p>当事務所は、適正かつ公正な手段によって、ユーザーがお問い合わせフォームを利用する際、氏名、メールアドレスなどの個人情報を取得させていただきます。</p>
- 
+
           <h3>2. 個人情報の利用目的</h3>
           <p>当事務所は、取得した個人情報を、以下の目的で利用します。</p>
           <ul>
@@ -105,16 +114,16 @@
             <li>ご依頼やご相談への対応</li>
             <li>業務上の連絡</li>
           </ul>
- 
+
           <h3>3. 個人情報の安全管理措置</h3>
           <p>当事務所は、個人情報の漏洩、紛失、毀損の防止、その他安全管理のために、個人情報保護法に基づき必要かつ適切な措置を講じます。</p>
- 
+
           <h3>4. 個人情報の第三者提供</h3>
           <p>当事務所は、法令に定める場合を除き、ご本人の同意を得ることなく、個人情報を第三者に提供しません。</p>
- 
+
           <h3>5. 個人情報の開示・訂正・削除</h3>
           <p>ご本人から個人情報の開示、訂正、削除の請求があった場合、ご本人確認の上、速やかに対応します。</p>
- 
+
           <h3>6. アクセス解析・スパム対策について</h3>
           <p>当事務所のお問い合わせフォームでは、スパムメールや自動化されたプログラムによる不正アクセスからウェブサイトを保護するため、Google Inc.が提供する「Google reCAPTCHA v3」を利用しています。</p>
           <p>この機能は、ユーザーが人間であるかボットであるかを判定するために、クッキー（Cookie）を使用し、デバイスやアプリケーションのデータ、および本ウェブサイトにおける操作ログなどの情報をGoogleに送信・分析します。</p>
@@ -123,19 +132,19 @@
           <ul>
             <li><a href="https://policies.google.com/privacy?hl=ja" target="_blank">Google プライバシーポリシー</a></li>
             <li><a href="https://policies.google.com/terms?hl=ja" target="_blank">Google 利用規約</a></li>
-          </ul> 
- 
+          </ul>
+
           <h3>7. お問い合わせ窓口</h3>
           <p>当事務所の個人情報の取り扱いに関するお問い合わせは、以下の窓口までご連絡ください。</p>
           <p>事業名：サカイデザインアトリエ<br>
           責任者：境美月<br>
           メールアドレス：sakai.mitsuki.design@gmail.com</p>
- 
+
           <p class="privacy-date">策定日：2026年6月3日</p>
         </div>
 
-         <div class="form-submit">
-          <button type="submit">送信</button>
+        <div class="form-submit">
+          <button type="submit" id="submit-btn">送信</button>
         </div>
 
       </form>
@@ -149,6 +158,7 @@
   </footer>
 
   <script>
+    // ハンバーガーメニュー
     const hamburger = document.getElementById('hamburger');
     const drawer = document.getElementById('drawer');
     const overlay = document.getElementById('drawer-overlay');
@@ -158,6 +168,28 @@
     hamburger.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
+
+    // ★追加③：reCAPTCHA v3 トークン取得して送信
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送信中...';
+
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6Le0MAktAAAAAFEkKLEzlhDyUS1bOCrPfBWBFE8f', { action: 'contact' })
+          .then(function(token) {
+            document.getElementById('g-recaptcha-response').value = token;
+            form.submit();
+          })
+          .catch(function() {
+            alert('reCAPTCHAの処理に失敗しました。ページを再読み込みしてお試しください。');
+            submitBtn.disabled = false;
+            submitBtn.textContent = '送信';
+          });
+      });
+    });
   </script>
 
 </body>
