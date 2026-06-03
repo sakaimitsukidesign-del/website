@@ -24,6 +24,11 @@ header {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #ececec;
+
+/* ヘッダーを最上部に固定 */
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo-wrap {
@@ -68,6 +73,11 @@ nav {
   display: flex;
   justify-content: center;
   gap: 0;
+
+  /* ヘッダーのすぐ下に固定 */
+  position: sticky;
+  top: 89px; /* デスクトップ版ヘッダーの高さ（パディング＋ロゴ）に合わせる */
+  z-index: 90;
 }
 
 nav a {
@@ -245,6 +255,7 @@ footer .footer-copy {
 
   header {
     padding: 14px 24px; /* 上下を少し詰め、左右の余白を48pxから24pxに狭くします */
+    top: 0;
   }
 
   .hero {
