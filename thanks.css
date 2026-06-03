@@ -2,11 +2,11 @@
 
 :root {
   --orange: #d4521a;
-  --orange-light: #e06030;
   --white: #ffffff;
   --off-white: #fafafa;
   --ink: #1a1a1a;
-  --gray: #888;
+  --gray: #666;
+  --border: #e0e0e0;
 }
 
 body {
@@ -14,6 +14,9 @@ body {
   background: var(--off-white);
   color: var(--ink);
   font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ── HEADER ── */
@@ -25,48 +28,14 @@ header {
   border-bottom: 1px solid #ececec;
 }
 
-.logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  text-decoration: none;
-}
-
-.logo-img {
-  height: 52px;
-  width: auto;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.logo-text .en {
-  font-family: 'Jost', sans-serif;
-  font-size: 9.5px;
-  font-weight: 300;
-  letter-spacing: 0.28em;
-  color: var(--orange);
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-
-.logo-text .ja {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 17px;
-  font-weight: 100;
-  letter-spacing: 0.18em;
-  color: var(--orange);
-}
+.logo-wrap { display: flex; align-items: center; text-decoration: none; }
+.logo-img { height: 52px; width: auto; }
 
 /* ── NAV ── */
 nav {
   background: var(--orange);
   display: flex;
   justify-content: center;
-  gap: 0;
 }
 
 nav a {
@@ -92,71 +61,87 @@ nav a::after {
 }
 
 nav a:last-child::after { display: none; }
-
 nav a:hover { background: rgba(0,0,0,0.12); }
 
-/* ── ハンバーガー・ドロワー（デスクトップでは非表示） ── */
+/* ── ハンバーガー（デスクトップ非表示） ── */
 .hamburger { display: none; }
 .drawer { display: none; }
 .drawer-overlay { display: none; }
 
-/* ── HERO ── */
-.hero {
-  min-height: 560px;
-  background: var(--white);
+/* ── MAIN ── */
+main {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 24px;
   padding: 80px 48px;
-  text-align: center;
 }
 
-
-
-.hero-tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  color: var(--ink);
-  line-height: 1.4;
-}
-
-.hero-tagline em {
-  font-style: italic;
-  color: var(--orange);
-}
-
-.hero-sub {
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  color: var(--gray);
-  font-weight: 300;
-  margin-top: 8px;
-}
-
-.hero-divider {
-  width: 40px;
-  height: 0.5px;
-  background: var(--orange);
-  margin: 12px auto 0;
-}
-
-/* ── SECTIONS (準備中の各コンテンツ用プレースホルダー) ── */
-.section-placeholder {
+.thanks-card {
   background: var(--white);
-  margin: 1px 0;
-  min-height: 280px;
+  max-width: 560px;
+  width: 100%;
+  padding: 72px 64px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease 0.1s forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* メガネアイコン */
+.icon-wrap {
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: #ccc;
-  font-size: 11px;
+  margin-bottom: 48px;
+}
+ 
+.glasses-img {
+  width: 200px !important;
+  max-width: 200px !important;
+  height: auto !important;
+  display: block;
+}
+
+/* テキスト */
+.thanks-title {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.thanks-body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--gray);
+  letter-spacing: 0.06em;
+  line-height: 2.1;
+  margin-bottom: 48px;
+}
+
+.back-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 10.5px;
+  font-weight: 300;
   letter-spacing: 0.3em;
   text-transform: uppercase;
+  color: var(--white);
+  background: var(--orange);
+  padding: 13px 52px;
+  transition: opacity 0.2s;
 }
+
+.back-btn:hover { opacity: 0.82; }
 
 /* ── FOOTER ── */
 footer {
@@ -164,13 +149,11 @@ footer {
   color: var(--white);
   text-align: center;
   padding: 10px 48px;
-  font-size: 7px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
   font-weight: 300;
 }
 
-footer .footer-logo {
+.footer-logo {
+  font-family: 'Noto Sans JP', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.25em;
@@ -178,38 +161,22 @@ footer .footer-logo {
   opacity: 0.9;
 }
 
-footer .footer-copy {
+.footer-copy {
   opacity: 0.65;
   font-size: 7px;
   letter-spacing: 0.2em;
 }
 
-/* ── RESPONSIVE (スマホ) ── */
+/* ── RESPONSIVE ── */
 @media (max-width: 600px) {
-
   header {
     padding: 14px 20px;
     justify-content: space-between;
   }
 
-  .logo-img {
-    height: 38px;
-  }
+  .logo-img { height: 38px; }
+  #global-nav { display: none; }
 
-  .logo-text .ja {
-    font-size: 13px;
-  }
-
-  .logo-text .en {
-    font-size: 8px;
-  }
-
-  /* デスクトップナビを非表示 */
-  #global-nav {
-    display: none;
-  }
-
-  /* ハンバーガーボタン */
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -228,7 +195,6 @@ footer .footer-copy {
     background: var(--orange);
   }
 
-  /* ドロワー本体 */
   .drawer {
     display: block;
     position: fixed;
@@ -241,9 +207,7 @@ footer .footer-copy {
     padding: 60px 32px 40px;
   }
 
-  .drawer.open {
-    right: 0;
-  }
+  .drawer.open { right: 0; }
 
   .drawer-close {
     position: absolute;
@@ -259,7 +223,6 @@ footer .footer-copy {
     display: flex;
     flex-direction: column;
     gap: 0;
-    background: var(--white); 
   }
 
   .drawer-nav a {
@@ -275,7 +238,6 @@ footer .footer-copy {
     border-bottom: 0.5px solid #ececec;
   }
 
-  /* オーバーレイ */
   .drawer-overlay {
     display: block;
     position: fixed;
@@ -290,5 +252,17 @@ footer .footer-copy {
   .drawer-overlay.open {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  main {
+    padding: 48px 24px;
+  }
+
+  .thanks-card {
+    padding: 52px 32px;
+  }
+
+  footer {
+    padding: 10px 24px;
   }
 }

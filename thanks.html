@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サカイデザインアトリエ</title>
+  <title>送信完了 | サカイデザインアトリエ</title>
   <link rel="icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300&family=Jost:wght@200;300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="thanks.css">
 </head>
 <body>
 
   <!-- HEADER -->
   <header>
-    <a href="#" class="logo-wrap">
+    <a href="index.html" class="logo-wrap">
       <img src="ロゴ-01.png" alt="サカイデザインアトリエ ロゴ" class="logo-img">
-      
     </a>
     <button class="hamburger" id="hamburger" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
   </header>
 
-  <!-- NAV (デスクトップ) -->
+  <!-- NAV（デスクトップ） -->
   <nav id="global-nav">
-    <a href="#">Home</a>
+    <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="#">Works</a>
     <a href="#">Service</a>
@@ -31,31 +30,41 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- スマホ用ドロワーメニュー -->
+  <!-- ドロワー（スマホ） -->
   <div class="drawer" id="drawer">
     <button class="drawer-close" id="drawer-close" aria-label="閉じる">&#x2715;</button>
     <nav class="drawer-nav">
-      <a href="#">Home</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
       <a href="#">Works</a>
       <a href="#">Service</a>
       <a href="#">Flow</a>
-       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
   <div class="drawer-overlay" id="drawer-overlay"></div>
 
-  <!-- HERO -->
-   <section class="hero">
-    <p class="hero-sub">サイト準備中　</p>
-  </section>
+  <!-- MAIN -->
+  <main>
+    <div class="thanks-card">
 
-  <!-- CONTENT PLACEHOLDERS -->
-  <div id="contact" class="section-placeholder">お問い合わせはコチラ</div>
-  <div id="works"   class="section-placeholder">Works — coming soon</div>
-  <div id="service" class="section-placeholder">Service — coming soon</div>
-  <div id="flow"    class="section-placeholder">Flow — coming soon</div>
+      <!-- メガネアイコン -->
+      <div class="icon-wrap">
+        <img src="ロゴ-2.png" alt="" class="glasses-img">
+      </div>
 
+      <h1 class="thanks-title">
+        お問い合わせありがとうございます。
+      </h1>
+      <p class="thanks-body">
+        <!--確認のため、自動返信メールをお送りいたします。<br>-->
+        内容を確認次第、改めてご連絡いたします。
+      </p>
+
+      <a href="index.html" class="back-btn">Home</a>
+
+    </div>
+  </main>
 
   <!-- FOOTER -->
   <footer>
@@ -64,20 +73,13 @@
   </footer>
 
   <script>
+    // ハンバーガーメニュー
     const hamburger = document.getElementById('hamburger');
     const drawer = document.getElementById('drawer');
     const overlay = document.getElementById('drawer-overlay');
     const closeBtn = document.getElementById('drawer-close');
-
-    function openDrawer() {
-      drawer.classList.add('open');
-      overlay.classList.add('open');
-    }
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      overlay.classList.remove('open');
-    }
-
+    function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
     hamburger.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
