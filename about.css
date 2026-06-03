@@ -154,6 +154,32 @@ footer {
   letter-spacing: 0.28em;
   text-transform: uppercase;
   font-weight: 300;
+  position: relative;
+}
+
+.footer-sns {
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.footer-sns a {
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.footer-sns a:hover {
+  opacity: 1;
+}
+
+.footer-sns img {
+  height: 22px;
+  width: auto;
 }
 
 .footer-logo {
@@ -306,5 +332,13 @@ footer {
 
   .bio p {
     font-size: 12px;
+  }
+
+  .footer-sns {
+    left: 20px;
+  }
+
+  .footer-sns img {
+    height: 18px;
   }
 }
