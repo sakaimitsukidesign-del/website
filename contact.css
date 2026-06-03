@@ -194,6 +194,16 @@ nav a.active { background: rgba(0,0,0,0.15); }
   transform: rotate(45deg);
 }
 
+/* プライバシー同意チェックボックス */
+.privacy-agree {
+  padding-top: 8px;
+}
+
+.privacy-agree .checkbox-item {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
 /* 送信ボタン */
 .form-submit {
   display: flex;

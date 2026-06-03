@@ -8,10 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="contact.css">
 
-  <!-- ★追加①：reCAPTCHA v3 スクリプト -->
+  <!-- reCAPTCHA v3 -->
   <script src="https://www.google.com/recaptcha/api.js?render=6Le0MAktAAAAAFEkKLEzlhDyUS1bOCrPfBWBFE8f"></script>
 
-  <!-- reCAPTCHAバッジを非表示（プライバシーポリシーに記載済みのため） -->
   <style>
     .grecaptcha-badge { visibility: hidden; }
   </style>
@@ -60,11 +59,22 @@
         <h1>お問い合わせ</h1>
       </div>
 
-      <form action="https://formspree.io/f/xqejrwol" method="POST" class="contact-form" id="contact-form">
+      <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contact-form">
 
-         
-        <!-- ★追加②：reCAPTCHAトークンを格納するhidden input -->
+        <!-- Web3Forms 設定 -->
+        <input type="hidden" name="access_key" value="29640c52-6ee4-4297-9eb0-b07509c2d7ec">
+        <input type="hidden" name="subject" value="【サカイデザインアトリエ】お問い合わせを受け付けました">
+        <input type="hidden" name="from_name" value="サカイデザインアトリエ">
+
+        <!-- 自動返信メール設定 -->
+        <input type="hidden" name="autoresponse_subject" value="【サカイデザインアトリエ】お問い合わせを受け付けました">
+        <input type="hidden" name="autoresponse_message" value="この度はサカイデザインアトリエへお問い合わせいただき、誠にありがとうございます。&#13;&#10;&#13;&#10;内容を確認の上、改めてご連絡いたします。今しばらくお待ちください。&#13;&#10;&#13;&#10;━━━━━━━━━━━━━━━━━&#13;&#10;サカイデザインアトリエ&#13;&#10;sakai.mitsuki.design@gmail.com&#13;&#10;https://sakaidesignatelier.com&#13;&#10;━━━━━━━━━━━━━━━━━&#13;&#10;&#13;&#10;※ このメールは自動送信されています。このメールへの返信はお控えください。">
+
+        <!-- reCAPTCHAトークン -->
         <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
+        <!-- thanksページへのリダイレクト（fetchで制御するためコメントアウト） -->
+        <!-- <input type="hidden" name="redirect" value="https://sakaidesignatelier.com/thanks.html"> -->
 
         <div class="form-group">
           <label>お名前</label>
@@ -73,7 +83,7 @@
 
         <div class="form-group">
           <label>会社名・屋号・活動名</label>
-          <input type="text" name="company" placeholder="個人の場合はお名前">
+          <input type="text" name="company" required placeholder="個人の場合はお名前">
         </div>
 
         <div class="form-group">
@@ -144,6 +154,13 @@
           <p class="privacy-date">策定日：2026年6月3日</p>
         </div>
 
+        <div class="form-group privacy-agree">
+          <label class="checkbox-item">
+            <input type="checkbox" name="privacy" id="privacy-check" required>
+            プライバシーポリシーに同意する
+          </label>
+        </div>
+
         <div class="form-submit">
           <button type="submit" id="submit-btn">送信</button>
         </div>
@@ -183,7 +200,6 @@
         .then(function(token) {
           document.getElementById('g-recaptcha-response').value = token;
 
-          // ★ form.submit() → fetch に変更
           fetch(form.action, {
             method: 'POST',
             body: new FormData(form),
@@ -191,7 +207,6 @@
           })
           .then(function(response) {
             if (response.ok) {
-              // 送信成功 → thanksページへ
               window.location.href = 'thanks.html';
             } else {
               alert('送信に失敗しました。お手数ですが、メールにてご連絡ください。');
@@ -212,7 +227,7 @@
         });
     });
   });
-</script>
+  </script>
 
 </body>
 </html>
