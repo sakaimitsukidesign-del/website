@@ -256,7 +256,7 @@ nav a.active { background: rgba(0,0,0,0.15); }
 .work-desc-heading {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 16px;
-  font-weight: 1000;
+  font-weight: 900;
   letter-spacing: 0.2em;
   color: var(--ink);
   line-height: 1.6;
@@ -265,7 +265,7 @@ nav a.active { background: rgba(0,0,0,0.15); }
 .work-desc-sub {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 12px;
-  font-weight: 1000;
+  font-weight: 900;
   letter-spacing: 0.08em;
   color: var(--ink);
   line-height: 1.6;
