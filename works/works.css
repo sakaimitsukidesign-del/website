@@ -1,0 +1,388 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange: #d4521a;
+  --orange-light: #e06030;
+  --white: #ffffff;
+  --off-white: #fafafa;
+  --ink: #1a1a1a;
+  --gray: #888;
+  --thumb-bg: #ebebeb;
+}
+
+body {
+  font-family: 'Jost', 'Noto Sans JP', sans-serif;
+  background: var(--off-white);
+  color: var(--ink);
+  font-weight: 300;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--white);
+  padding: 18px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ececec;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 52px;
+  width: auto;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--orange);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  position: sticky;
+  top: 89px;
+  z-index: 90;
+}
+
+nav a {
+  display: inline-block;
+  padding: 14px 44px;
+  font-family: 'Jost', sans-serif;
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  position: relative;
+  transition: background 0.2s;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 25%; bottom: 25%;
+  width: 0.5px;
+  background: rgba(255,255,255,0.35);
+}
+
+nav a:last-child::after { display: none; }
+nav a:hover { background: rgba(0,0,0,0.12); }
+
+/* アクティブなページ */
+nav a.active {
+  background: rgba(0,0,0,0.15);
+}
+
+/* ── ハンバーガー・ドロワー（デスクトップでは非表示） ── */
+.hamburger { display: none; }
+.drawer { display: none; }
+.drawer-overlay { display: none; }
+
+/* ── PAGE TITLE ── */
+.page-title {
+  padding: 52px 80px 32px;
+  background: var(--white);
+  border-bottom: 1px solid #ececec;
+}
+
+.page-title-en {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+/* ── WORKS MAIN ── */
+.works-main {
+  padding: 64px 80px 96px;
+  background: var(--white);
+}
+
+/* ── WORKS GRID ── */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 40px;
+}
+
+/* ── WORK ITEM ── */
+.work-item {}
+
+.work-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* サムネイル */
+.work-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--thumb-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.work-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+/* 実績ありの場合：ホバーで画像を拡大 */
+.work-item:not(.work-coming) .work-link:hover .work-thumb img {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+/* coming soon サムネイル */
+.work-thumb--empty {
+  background: #ebebeb;
+}
+
+.coming-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+/* ── 作品情報 ── */
+.work-info {
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.work-category {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: var(--orange);
+}
+
+.work-title {
+  font-family: 'Jost', 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+
+/* coming soon のタイトル色 */
+.work-coming .work-title {
+  color: #bbb;
+  letter-spacing: 0.22em;
+}
+
+/* ── WORKS NOTE ── */
+.works-note {
+  background: var(--white);
+  padding: 0 80px 48px;
+  border-top: 0.5px solid #ececec;
+}
+
+.works-note p {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--gray);
+  line-height: 1.8;
+  padding-top: 24px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--orange);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 48px;
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 300;
+  position: relative;
+}
+
+.footer-sns {
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.footer-sns a {
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.footer-sns a:hover { opacity: 1; }
+
+.footer-sns img {
+  height: 22px;
+  width: auto;
+}
+
+footer .footer-logo {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+footer .footer-copy {
+  opacity: 0.65;
+  font-size: 7px;
+  letter-spacing: 0.2em;
+}
+
+/* ── RESPONSIVE (スマホ) ── */
+@media (max-width: 600px) {
+
+  header {
+    padding: 14px 24px;
+  }
+
+  .logo-img {
+    height: 38px;
+  }
+
+  #global-nav {
+    display: none;
+  }
+
+  /* ハンバーガーボタン */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--orange);
+  }
+
+  /* ドロワー */
+  .drawer {
+    display: block;
+    position: fixed;
+    top: 0; right: -100%;
+    width: 65%;
+    height: 100%;
+    background: var(--white);
+    z-index: 200;
+    transition: right 0.3s ease;
+    padding: 60px 32px 40px;
+  }
+
+  .drawer.open { right: 0; }
+
+  .drawer-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--orange);
+    cursor: pointer;
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    gap: 0;
+  }
+
+  .drawer-nav a {
+    display: block;
+    padding: 16px 0;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 0.5px solid #ececec;
+  }
+
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .drawer-overlay.open {
+    display: block;
+    opacity: 1;
+  }
+
+  /* PAGE TITLE */
+  .page-title {
+    padding: 32px 24px 20px;
+  }
+
+  /* WORKS MAIN */
+  .works-main {
+    padding: 32px 24px 64px;
+  }
+
+  /* グリッドをスマホでは1列に */
+  .works-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .works-note {
+    padding: 0 24px 40px;
+  }
+
+  .footer-sns {
+    left: 20px;
+  }
+
+  .footer-sns img {
+    height: 18px;
+  }
+}

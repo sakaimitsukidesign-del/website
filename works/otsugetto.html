@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noai, noimageai">
+  <title>カードゲーム「お告げっと」| サカイデザインアトリエ</title>
+  <link rel="icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300&family=Jost:wght@200;300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="otsugetto.css">
+  <link rel="stylesheet" href="../protect.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="../index.html" class="logo-wrap">
+      <img src="../ロゴ-01.png" alt="サカイデザインアトリエ ロゴ" class="logo-img">
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- NAV (デスクトップ) -->
+  <nav id="global-nav">
+    <a href="../index.html">Home</a>
+    <a href="works.html" class="active">Works</a>
+    <a href="../service.html">Service</a>
+    <a href="../flow.html">Flow</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+
+  <!-- スマホ用ドロワーメニュー -->
+  <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawer-close" aria-label="閉じる">&times;</button>
+    <nav class="drawer-nav">
+      <a href="../index.html">Home</a>
+      <a href="works.html">Works</a>
+      <a href="../service.html">Service</a>
+      <a href="../flow.html">Flow</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="works.html">Works</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">カードゲーム「お告げっと」</span>
+  </div>
+
+  <!-- WORK DETAIL -->
+  <main class="work-detail">
+
+    <!-- 左：画像ギャラリー -->
+    <div class="gallery">
+
+      <!-- メイン画像 -->
+      <div class="gallery-main">
+        <button class="gallery-arrow gallery-arrow--prev" id="prevBtn" aria-label="前の画像">&#8249;</button>
+        <div class="gallery-main-inner">
+          <img id="mainImage" src="../otsugetto/お告げっと_1.png" alt="お告げっと メイン画像">
+        </div>
+        <button class="gallery-arrow gallery-arrow--next" id="nextBtn" aria-label="次の画像">&#8250;</button>
+      </div>
+
+      <!-- サムネイル -->
+      <div class="gallery-thumbs">
+        <button class="thumb active" data-index="0" aria-label="画像1">
+          <img src="../otsugetto/お告げっと_1.png" alt="お告げっと 画像1">
+        </button>
+        <button class="thumb" data-index="1" aria-label="画像2">
+          <img src="../otsugetto/お告げっと_2.png" alt="お告げっと 画像2">
+        </button>
+        <button class="thumb" data-index="2" aria-label="画像3">
+          <img src="../otsugetto/お告げっと_3.png" alt="お告げっと 画像3">
+        </button>
+        <button class="thumb" data-index="3" aria-label="画像4">
+          <img src="../otsugetto/お告げっと_4.png" alt="お告げっと 画像4">
+        </button>
+      </div>
+
+    </div>
+
+    <!-- 右：テキスト情報 -->
+    <div class="work-info">
+      <span class="work-category">パッケージ</span>
+      <h1 class="work-title">カードゲーム「お告げっと」</h1>
+
+      <div class="work-desc-block">
+        <p class="work-desc-heading">世界観を統一するグラフィックデザイン</p>
+        <p class="work-desc-sub">カードゲームの魅力を引き出すパッケージ＆カードやルールブックを含む制作物全体のデザイン</p>
+        <p class="work-desc-body">本制作は、サカイデザインアトリエ開業前の大学在学中に、有志の学生によるカードゲーム開発プロジェクトにデザイナーとして参画した制作事例です。占いと漢字をテーマにしたゲーム「お告げっと」において、パッケージからカード、ルールブックに至るまで、グラフィックデザイン全般をトータルで担当いたしました。</p>
+        <p class="work-desc-body">「占い」というテーマから連想されるイメージ（水晶玉、ミステリアスな紫、怪しげな光、クラシカルな文字）を極限までシンプルに、かつストレートに視覚化し、ターゲットへ直観的に「楽しそう！」「怪しげで面白そう」と思わせるビジュアルアイデンティティを構築しました。</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-sns">
+      <a href="https://www.instagram.com/sakaidesignatelier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="../インスタグラム.png" alt="Instagram">
+      </a>
+    </div>
+    <div class="footer-logo">サカイデザインアトリエ</div>
+    <div class="footer-copy">&copy; 2026 サカイデザインアトリエ &nbsp;|&nbsp; sakai.mitsuki.design@gmail.com</div>
+  </footer>
+
+  <script>
+    // ── ドロワー ──
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('drawer');
+    const overlay   = document.getElementById('drawer-overlay');
+    const closeBtn  = document.getElementById('drawer-close');
+
+    hamburger.addEventListener('click', () => {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+    });
+    [closeBtn, overlay].forEach(el => el.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    }));
+
+    // ── ギャラリー ──
+    const images = [
+      '../otsugetto/お告げっと_1.png',
+      '../otsugetto/お告げっと_2.png',
+      '../otsugetto/お告げっと_3.png',
+      '../otsugetto/お告げっと_4.png',
+    ];
+
+    let current = 0;
+    const mainImg = document.getElementById('mainImage');
+    const thumbs  = document.querySelectorAll('.thumb');
+
+    function goTo(index) {
+      current = (index + images.length) % images.length;
+      // フェード
+      mainImg.style.opacity = '0';
+      setTimeout(() => {
+        mainImg.src = images[current];
+        mainImg.style.opacity = '1';
+      }, 180);
+      // サムネイルのactive
+      thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => goTo(Number(thumb.dataset.index)));
+    });
+  </script>
+
+  <script src="../protect.js"></script>
+
+</body>
+</html>

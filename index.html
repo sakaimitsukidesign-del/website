@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noai, noimageai">
   <title>サカイデザインアトリエ</title>
   <link rel="icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300&family=Jost:wght@200;300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="protect.css">
 </head>
 <body>
 
@@ -24,7 +26,7 @@
   <!-- NAV (デスクトップ) -->
   <nav id="global-nav">
     <a href="#">Home</a>
-    <a href="#">Works</a>
+    <a href="../works/works.html">Works</a>
     <a href="#">Service</a>
     <a href="flow.html">Flow</a>
     <a href="about.html">About</a>
@@ -36,7 +38,7 @@
     <button class="drawer-close" id="drawer-close" aria-label="閉じる">&#x2715;</button>
     <nav class="drawer-nav">
       <a href="#">Home</a>
-      <a href="#">Works</a>
+      <a href="../works/works.html">Works</a>
       <a href="#">Service</a>
       <a href="flow.html">Flow</a>
        <a href="about.html">About</a>
@@ -67,14 +69,63 @@
       <p>完璧さよりも、少しのゆらぎや個性が人の心を動かすこともあります。それこそが、その人らしさや組織らしさを伝える力になると信じています。</p>
 
       <p>「本当の意味でのデザインとは何か」。その問いへの答えを探し続けるように、サカイデザインアトリエは売り手と買い手、その両方の声に耳を傾けながら、その人や組織らしい形を一緒に探していく伴走者でありたいと考えています。</p>
+
+      <div class="hero-contact-wrap">
+        <a href="contact.html" class="hero-contact-link">お問い合わせはコチラ &nbsp;›</a>
+      </div>
     </div>
   </section>
 
-  <!-- CONTENT PLACEHOLDERS -->
- <a href="contact.html" id="contact" class="section-placeholder">お問い合わせはコチラ</a>
-  <div id="works"   class="section-placeholder">Works — coming soon</div>
-  <div id="service" class="section-placeholder">Service — coming soon</div>
-  <div id="flow"    class="section-placeholder">Flow — coming soon</div>
+  <!-- WORKS SECTION -->
+  <section class="home-works" id="works">
+    <div class="home-works-grid">
+
+      <!-- 実績1：カードゲームデザイン -->
+      <article class="home-work-item">
+        <a href="works/otsugetto.html" class="home-work-link">
+          <div class="home-work-thumb">
+            <img src="otsugetto/お告げっと_1.png" alt="カードゲームデザイン">
+          </div>
+          <div class="home-work-info">
+            <span class="home-work-category">パッケージ</span>
+            <h3 class="home-work-title">カードゲーム「お告げっと」</h3>
+          </div>
+        </a>
+      </article>
+
+      <!-- 実績2：coming soon -->
+      <article class="home-work-item home-work-coming">
+        <div class="home-work-link">
+          <div class="home-work-thumb home-work-thumb--empty">
+            <span class="home-coming-label">COMING SOON</span>
+          </div>
+          <div class="home-work-info">
+            <span class="home-work-category">ブランディング</span>
+            <h3 class="home-work-title">COMING&nbsp;&nbsp;SOON</h3>
+          </div>
+        </div>
+      </article>
+
+      <!-- 実績3：coming soon -->
+      <article class="home-work-item home-work-coming">
+        <div class="home-work-link">
+          <div class="home-work-thumb home-work-thumb--empty">
+            <span class="home-coming-label">COMING SOON</span>
+          </div>
+          <div class="home-work-info">
+            <span class="home-work-category">ポスター</span>
+            <h3 class="home-work-title">COMING&nbsp;&nbsp;SOON</h3>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- view more -->
+    <div class="home-works-more">
+      <a href="works/works.html" class="home-works-more-link">view&nbsp;more&nbsp;›</a>
+    </div>
+  </section>
 
 
   <!-- FOOTER -->
@@ -120,6 +171,8 @@
       slides[current].classList.add('active');
     }, 3000);
   </script>
+
+  <script src="protect.js"></script>
 
 </body>
 </html>

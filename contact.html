@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noai, noimageai">
   <title>Contact | サカイデザインアトリエ</title>
   <link rel="icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="protect.css">
 
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -29,7 +31,7 @@
   <!-- NAV -->
   <nav id="global-nav">
     <a href="index.html">Home</a>
-    <a href="#">Works</a>
+    <a href="../works/works.html">Works</a>
     <a href="#">Service</a>
     <a href="flow.html">Flow</a>
     <a href="about.html">About</a>
@@ -41,7 +43,7 @@
     <button class="drawer-close" id="drawer-close" aria-label="閉じる">&#x2715;</button>
     <nav class="drawer-nav">
       <a href="index.html">Home</a>
-      <a href="#">Works</a>
+      <a href="../works/works.html">Works</a>
       <a href="#">Service</a>
       <a href="flow.html">Flow</a>
       <a href="about.html">About</a>
@@ -206,6 +208,8 @@
       });
   });
   </script>
+
+  <script src="protect.js"></script>
 
 </body>
 </html>

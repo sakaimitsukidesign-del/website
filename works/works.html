@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noai, noimageai">
+  <title>Works | サカイデザインアトリエ</title>
+  <link rel="icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300&family=Jost:wght@200;300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="works.css">
+  <link rel="stylesheet" href="../protect.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="../index.html" class="logo-wrap">
+      <img src="../ロゴ-01.png" alt="サカイデザインアトリエ ロゴ" class="logo-img">
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- NAV (デスクトップ) -->
+  <nav id="global-nav">
+    <a href="../index.html">Home</a>
+    <a href="works.html" class="active">Works</a>
+    <a href="../service.html">Service</a>
+    <a href="../flow.html">Flow</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+
+  <!-- スマホ用ドロワーメニュー -->
+  <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawer-close" aria-label="閉じる">&#x2715;</button>
+    <nav class="drawer-nav">
+      <a href="../index.html">Home</a>
+      <a href="works.html">Works</a>
+      <a href="../service.html">Service</a>
+      <a href="../flow.html">Flow</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <!-- PAGE TITLE -->
+  <div class="page-title">
+    <span class="page-title-en">Works</span>
+  </div>
+
+  <!-- WORKS GRID -->
+  <main class="works-main">
+    <div class="works-grid">
+
+      <!-- 実績1：カードゲームデザイン -->
+      <article class="work-item" data-category="パッケージ">
+        <a href="otsugetto.html" class="work-link">
+          <div class="work-thumb">
+            <img src="../otsugetto/お告げっと_1.png" alt="カードゲームデザイン">
+          </div>
+          <div class="work-info">
+            <span class="work-category">パッケージ</span>
+            <h2 class="work-title">カードゲーム「お告げっと」</h2>
+          </div>
+        </a>
+      </article>
+
+      <!-- 実績2：coming soon -->
+      <article class="work-item work-coming" data-category="ブランディング">
+        <div class="work-link">
+          <div class="work-thumb work-thumb--empty">
+            <span class="coming-label">COMING SOON</span>
+          </div>
+          <div class="work-info">
+            <span class="work-category">ブランディング</span>
+            <h2 class="work-title">COMING&nbsp;&nbsp;SOON</h2>
+          </div>
+        </div>
+      </article>
+
+      <!-- 実績3：coming soon -->
+      <article class="work-item work-coming" data-category="ポスター">
+        <div class="work-link">
+          <div class="work-thumb work-thumb--empty">
+            <span class="coming-label">COMING SOON</span>
+          </div>
+          <div class="work-info">
+            <span class="work-category">ポスター</span>
+            <h2 class="work-title">COMING&nbsp;&nbsp;SOON</h2>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- DISCLAIMER NOTE -->
+  <div class="works-note">
+    <p>※当事務所の掲載実績は、クライアントのご協力のもと掲載しています。画像の無断転載、模倣、およびAI学習への利用は固くお断りいたします。</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-sns">
+      <a href="https://www.instagram.com/sakaidesignatelier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="../インスタグラム.png" alt="Instagram">
+      </a>
+    </div>
+    <div class="footer-logo">サカイデザインアトリエ</div>
+    <div class="footer-copy">&copy; 2026 サカイデザインアトリエ &nbsp;|&nbsp; sakai.mitsuki.design@gmail.com</div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    const closeBtn = document.getElementById('drawer-close');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+
+    hamburger.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+  </script>
+
+  <script src="../protect.js"></script>
+
+</body>
+</html>

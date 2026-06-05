@@ -176,6 +176,144 @@ nav a:hover { background: rgba(0,0,0,0.12); }
   color: #444;
 }
 
+/* ── ヒーロー内お問い合わせリンク ── */
+.hero-contact-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.hero-contact-link {
+  font-family: 'Jost', 'Noto Sans JP', sans-serif;
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  color: var(--orange);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--orange);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.hero-contact-link:hover {
+  opacity: 0.65;
+}
+
+/* ── HOME WORKS SECTION ── */
+.home-works {
+  background: var(--white);
+  padding: 64px 80px 56px;
+  margin-top: 1px;
+}
+
+.home-works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 36px;
+}
+
+/* サムネイル */
+.home-work-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #ebebeb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.home-work-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.home-work-item:not(.home-work-coming) .home-work-link:hover .home-work-thumb img {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+.home-work-thumb--empty {
+  background: #ebebeb;
+}
+
+.home-coming-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+/* 作品情報 */
+.home-work-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+}
+
+.home-work-item:not(.home-work-coming) .home-work-link {
+  cursor: pointer;
+}
+
+.home-work-info {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home-work-category {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: var(--orange);
+}
+
+.home-work-title {
+  font-family: 'Jost', 'Noto Sans JP', sans-serif;
+  font-size: 13.5px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+
+.home-work-coming .home-work-title {
+  color: #bbb;
+  letter-spacing: 0.22em;
+}
+
+/* view more */
+.home-works-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+}
+
+.home-works-more-link {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: lowercase;
+  color: var(--orange);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--orange);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.home-works-more-link:hover {
+  opacity: 0.65;
+}
+
 /* ── SECTIONS (準備中の各コンテンツ用プレースホルダー) ── */
 .section-placeholder {
   background: var(--white);
@@ -276,6 +414,20 @@ footer .footer-copy {
 
   .hero-philosophy p {
     font-size: 12px;
+  }
+
+  .hero-contact-wrap {
+    margin-top: 4px;
+  }
+
+  /* home works */
+  .home-works {
+    padding: 40px 24px 48px;
+  }
+
+  .home-works-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
 
 

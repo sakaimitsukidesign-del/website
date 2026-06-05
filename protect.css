@@ -1,0 +1,67 @@
+/* ============================================
+   protect.css — 画像保護スタイル
+   全ページ共通で読み込む
+   ============================================ */
+
+/* すべての画像：選択・ドラッグ・長押し禁止 */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none; /* iOS長押しメニュー禁止 */
+  pointer-events: none;        /* ドラッグ・右クリックを根本から無効化 */
+}
+
+/* pointer-events:none にすると <a> 内の画像がクリックできなくなるため、
+   リンクを含む親要素でポインターを有効に戻す。
+   必要に応じてセレクタを追加してください。 */
+a,
+button,
+label {
+  pointer-events: auto;
+}
+
+/* ============================================
+   透明オーバーレイ
+   画像を含むコンテナに position:relative が
+   ついていれば ::after で画像の上に蓋をする。
+   下記セレクタはサイト内で画像を含む代表的な
+   クラスを列挙しています。必要に応じて追加を。
+   ============================================ */
+.hero-slideshow::after,
+.home-work-thumb::after,
+.work-thumb::after,
+.work-detail-img::after,
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 2;
+  pointer-events: none; /* クリック・ホバーは親に透過させる */
+  cursor: default;
+}
+
+/* 上記クラスに position:relative がまだなければ付与 */
+.hero-slideshow,
+.home-work-thumb,
+.work-thumb,
+.work-detail-img,
+.gallery-item {
+  position: relative;
+}
+
+/* ============================================
+   AIクローラー対策補足
+   ============================================ */
+
+/* 背景画像も選択禁止 */
+[style*="background-image"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
