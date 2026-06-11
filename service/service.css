@@ -1,0 +1,327 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange: #d4521a;
+  --white: #ffffff;
+  --off-white: #fafafa;
+  --ink: #1a1a1a;
+  --gray: #666;
+  --border: #e0e0e0;
+}
+
+body {
+  font-family: 'Jost', 'Noto Sans JP', sans-serif;
+  background: var(--off-white);
+  color: var(--ink);
+  font-weight: 300;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--white);
+  padding: 18px 48px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ececec;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-wrap { display: flex; align-items: center; text-decoration: none; }
+.logo-img { height: 52px; width: auto; }
+
+/* ── NAV ── */
+nav {
+  background: var(--orange);
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 89px;
+  z-index: 90;
+}
+
+nav a {
+  display: inline-block;
+  padding: 14px 44px;
+  font-family: 'Jost', sans-serif;
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  position: relative;
+  transition: background 0.2s;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 25%; bottom: 25%;
+  width: 0.5px;
+  background: rgba(255,255,255,0.35);
+}
+
+nav a:last-child::after { display: none; }
+nav a:hover { background: rgba(0,0,0,0.12); }
+nav a.active { background: rgba(0,0,0,0.15); }
+
+/* ── ハンバーガー・ドロワー（デスクトップでは非表示） ── */
+.hamburger { display: none; }
+.drawer { display: none; }
+.drawer-overlay { display: none; }
+
+/* ── SERVICE ── */
+.service-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 72px 48px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.service-label h1 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--ink);
+  padding-top: 8px;
+}
+
+/* ── SERVICE LIST ── */
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── SERVICE CARD ── */
+.service-card {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.service-card:first-child {
+  padding-top: 0;
+}
+
+.service-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.service-card-title {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+}
+
+.service-card-price {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.service-card-desc {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 11.5px;
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  margin-bottom: 16px;
+}
+
+.service-card-link {
+  display: inline-block;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--orange);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.service-card-link:hover {
+  opacity: 0.65;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--orange);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 48px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 300;
+  position: relative;
+}
+
+.footer-sns {
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.footer-sns a {
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.footer-sns a:hover { opacity: 1; }
+.footer-sns img { height: 22px; width: auto; }
+
+.footer-logo {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.footer-copy {
+  opacity: 0.65;
+  font-size: 7px;
+  letter-spacing: 0.2em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+
+  header {
+    padding: 14px 20px;
+    justify-content: space-between;
+    top: 0;
+  }
+
+  .logo-img { height: 38px; }
+  #global-nav { display: none; }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--orange);
+  }
+
+  .drawer {
+    display: block;
+    position: fixed;
+    top: 0; right: -100%;
+    width: 65%;
+    height: 100%;
+    background: var(--white);
+    z-index: 200;
+    transition: right 0.3s ease;
+    padding: 60px 32px 40px;
+  }
+
+  .drawer.open { right: 0; }
+
+  .drawer-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--orange);
+    cursor: pointer;
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--white);
+  }
+
+  .drawer-nav a {
+    display: block;
+    padding: 16px 0;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 0.5px solid #ececec;
+  }
+
+  .drawer-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .service-wrap {
+    padding: 40px 24px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .service-card-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .service-card-title {
+    font-size: 15px;
+  }
+
+  .footer-sns {
+    left: 20px;
+  }
+
+  .footer-sns img {
+    height: 18px;
+  }
+}

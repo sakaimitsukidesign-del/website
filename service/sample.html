@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noai, noimageai">
+  <title>ロゴデザイン詳細 | サカイデザインアトリエ</title>
+  <link rel="icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="logo.css">
+  <link rel="stylesheet" href="../protect.css">
+
+  <style>
+    /* ── 既存シミュレーター共通 ── */
+    .step-block {
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: simFadeUp 0.4s ease forwards;
+    }
+    @keyframes simFadeUp { to { opacity: 1; transform: translateY(0); } }
+    .hidden { display: none !important; }
+    .step-label { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .step-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      border: 1px solid var(--border);
+      font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 400;
+      color: var(--light-gray); display: flex; align-items: center;
+      justify-content: center; transition: all 0.3s;
+    }
+    .step-num.done { background: var(--orange); border-color: var(--orange); color: var(--white); }
+    .plan-card { cursor: pointer; transition: all 0.2s; }
+    .plan-card:hover { border-color: var(--light-gray); }
+    .plan-card.selected { border-color: var(--orange); background: var(--bg-tint); }
+    .sim-inline-counter { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding-left: 24px; }
+    .counter-btn {
+      width: 28px; height: 28px; background: var(--white);
+      border: 1px solid var(--border); color: var(--ink);
+      cursor: pointer; display: flex; align-items: center;
+      justify-content: center; font-size: 14px; transition: all 0.2s;
+    }
+    .counter-btn:hover { background: var(--orange); color: var(--white); border-color: var(--orange); }
+    .counter-val { font-family: 'Jost', sans-serif; font-size: 14px; min-width: 20px; text-align: center; }
+    .sim-summary-lines { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .sim-summary-line { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--gray); }
+    .sim-summary-line .s-price { font-family: 'Jost', sans-serif; color: var(--ink); }
+
+    /* ── AIボット ── */
+    .bot-entry-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 40px;
+      margin-bottom: 48px;
+    }
+    .bot-entry-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
+    }
+    .bot-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--orange); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .bot-entry-title {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px; font-weight: 300; letter-spacing: 0.1em; color: var(--ink);
+    }
+    .bot-entry-sub {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; color: var(--light-gray); letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+    .bot-divider {
+      height: 0.5px; background: var(--border); margin: 20px 0;
+    }
+    .bot-progress-wrap {
+      height: 2px; background: var(--border); border-radius: 1px; margin-bottom: 24px;
+    }
+    .bot-progress-fill {
+      height: 2px; background: var(--orange); border-radius: 1px; transition: width 0.4s ease;
+    }
+    .bot-chat { display: flex; flex-direction: column; gap: 12px; }
+    .bot-bubble-wrap { display: flex; gap: 10px; align-items: flex-start; }
+    .bot-bubble-avatar {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--bg-tint); border: 0.5px solid var(--border);
+      color: var(--orange); display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0; margin-top: 1px;
+    }
+    .bot-bubble {
+      background: var(--off-white); border: 0.5px solid var(--border);
+      padding: 11px 15px; max-width: 88%;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12.5px; font-weight: 300; line-height: 1.9;
+      letter-spacing: 0.04em; color: var(--ink);
+    }
+    .user-bubble {
+      align-self: flex-end;
+      background: var(--orange); color: var(--white);
+      padding: 9px 15px; max-width: 72%;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px; font-weight: 300; line-height: 1.7;
+      letter-spacing: 0.04em;
+    }
+    .bot-choices {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      padding-left: 36px; margin-top: 4px;
+    }
+    .bot-choice-btn {
+      padding: 7px 16px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11.5px; font-weight: 300; letter-spacing: 0.05em;
+      border: 1px solid var(--border); background: var(--white);
+      color: var(--ink); cursor: pointer; transition: all 0.18s;
+    }
+    .bot-choice-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* ? ヘルプボタン */
+    .help-q {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 1px solid var(--orange); color: var(--orange);
+      font-family: 'Jost', sans-serif; font-size: 9px; font-weight: 400;
+      cursor: pointer; margin-left: 5px; vertical-align: middle;
+      background: none; transition: all 0.2s; line-height: 1;
+    }
+    .help-q:hover { background: var(--orange); color: var(--white); }
+
+    /* モーダル */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45); z-index: 500;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--white); border: 0.5px solid var(--border);
+      padding: 32px 28px; max-width: 400px; width: 90%;
+    }
+    .modal-title {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.1em;
+      color: var(--ink); margin-bottom: 14px;
+      padding-bottom: 12px; border-bottom: 0.5px solid var(--border);
+    }
+    .modal-body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px; font-weight: 300; line-height: 2;
+      letter-spacing: 0.04em; color: var(--gray);
+    }
+    .modal-close-btn {
+      display: block; width: 100%; margin-top: 20px;
+      padding: 10px; border: 1px solid var(--border);
+      background: none; font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; letter-spacing: 0.1em; color: var(--gray);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .modal-close-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* ボット→シミュレーターCTA */
+    .bot-to-sim-btn {
+      display: block; width: 100%; margin-top: 24px;
+      padding: 14px 0; background: var(--orange); color: var(--white);
+      font-family: 'Jost', 'Noto Sans JP', sans-serif;
+      font-size: 11px; font-weight: 300; letter-spacing: 0.22em;
+      text-align: center; border: none; cursor: pointer; transition: opacity 0.2s;
+    }
+    .bot-to-sim-btn:hover { opacity: 0.85; }
+
+    /* フェードイン */
+    @keyframes botFadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+    .bot-fadein { animation: botFadeUp 0.32s ease forwards; }
+
+    /* スキップリンク */
+    .skip-to-sim {
+      display: inline-block; margin-bottom: 16px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px; font-weight: 300; letter-spacing: 0.08em;
+      color: var(--light-gray); text-decoration: underline;
+      cursor: pointer; background: none; border: none; padding: 0;
+      transition: color 0.2s;
+    }
+    .skip-to-sim:hover { color: var(--orange); }
+
+    @media (max-width: 600px) {
+      .bot-entry-wrap { padding: 24px 20px; }
+      .bot-choices { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" class="logo-wrap">
+      <img src="../ロゴ-01.png" alt="サカイデザインアトリエ ロゴ" class="logo-img">
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="global-nav">
+    <a href="../index.html">Home</a>
+    <a href="../works/works.html">Works</a>
+    <a href="service.html" class="active">Service</a>
+    <a href="../flow.html">Flow</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+
+  <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawer-close" aria-label="閉じる">&#x2715;</button>
+    <nav class="drawer-nav">
+      <a href="../index.html">Home</a>
+      <a href="../works/works.html">Works</a>
+      <a href="service.html" class="active">Service</a>
+      <a href="../flow.html">Flow</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="service.html">Service</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">ロゴデザイン</span>
+  </div>
+
+  <main class="detail-wrap">
+
+    <h1 class="page-title">ロゴデザイン</h1>
+
+    <section class="detail-section">
+      <h2 class="section-title">1. 基本料金</h2>
+      <p class="section-lead">事前のラフ提案数は共通（3案）とし、「本制作（ブラッシュアップ）に進める個数」でプランが異なります。</p>
+
+      <div class="plan-grid">
+        <div class="plan-card" id="card-one" onclick="selectPlanFlow('one')">
+          <div class="plan-header">
+            <span class="plan-name">ライトプラン</span>
+            <span class="plan-price">¥35,000〜</span>
+          </div>
+          <ul class="plan-list">
+            <li>①ラフ提案：3案</li>
+            <li>②本制作：1案（ラフから1案を選択）</li>
+            <li>③修正：採用案の微調整 2回まで無料</li>
+            <li>④データ納品</li>
+          </ul>
+          <p class="plan-note">★ 本制作前なら差額（¥35,000〜）でスタンダードプランへ切り替え可</p>
+        </div>
+
+        <div class="plan-card" id="card-three" onclick="selectPlanFlow('three')">
+          <div class="plan-header">
+            <span class="plan-name">スタンダードプラン</span>
+            <span class="plan-price">¥70,000〜</span>
+          </div>
+          <ul class="plan-list">
+            <li>①ラフ提案：3案</li>
+            <li>②本制作：3案（すべての方向性を本制作で比較）</li>
+            <li>③修正：採用案の微調整 2回まで無料</li>
+            <li>④データ納品</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <p class="info-box-label">＜プラン切り替えについて（ライトプラン → スタンダードプラン）＞</p>
+        <p>ラフ提案を見た後に「やっぱり複数本制作して見比べたい」となった場合、本制作に入る前であれば、差額（¥35,000〜）を追加することでスタンダードプランへ移行できます。</p>
+        <p class="info-box-note">本制作着手後は切り替え不可 ／ 消化済みの修正回数は引き継ぎ</p>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">2. 納品データについて</h2>
+      <p class="section-lead">詳しくない方でも安心。用途（WEB・印刷・看板など）をヒアリングし、最適な形式をご提案します。</p>
+
+      <ul class="dot-list">
+        <li>用途に応じて最適な形式で納品（例：PNG、JPEG、PDF、SVG など）</li>
+        <li>ホームページ、SNS、印刷物、看板など、使用目的を伺いながら必要な形式をご提案</li>
+        <li>デザインソフトをお持ちでない方には、Canva などで活用しやすいデータ形式でも納品可能</li>
+        <li>AIデータ（Illustrator形式）納品は別途オプション</li>
+      </ul>
+
+      <div class="price-note-list">
+        <div class="price-note-item">
+          <span class="price-note-label">納品後の追加データ作成・仕様調整</span>
+          <span class="price-note-price">¥3,000〜</span>
+        </div>
+        <div class="price-note-item">
+          <span class="price-note-label">特殊仕様へのデータ変換・入稿対応</span>
+          <span class="price-note-price">別途見積り</span>
+        </div>
+      </div>
+      <p class="caption">※ 特殊な仕様への対応や、納品後の追加調整が必要な場合は別途お見積りとなります。</p>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">3. 追加オプション</h2>
+      <p class="section-lead">権利の取り扱いや、ブランドの運用を強固にするためのカスタマイズ項目です。</p>
+
+      <div class="option-list">
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">追加修正（3回目以降）</span>
+            <span class="option-price">¥5,000〜 / 1回</span>
+          </div>
+          <p class="option-desc">カラー変更や軽微なバランス調整などの微修正が対象。大幅な原形変更・作り直しは別途見積もり。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">デザインガイドライン策定</span>
+            <span class="option-price">¥10,000〜 / ¥30,000（本格版）</span>
+          </div>
+          <p class="option-desc">最小余白（アイソレーション）、禁止事項、ブランドカラー（CMYK/RGB/WEB）、推奨フォントなどをまとめたPDF資料。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">AIデータ（Illustrator形式）納品</span>
+            <span class="option-price">¥10,000</span>
+          </div>
+          <p class="option-desc">印刷会社・制作会社への入稿用として利用できます。ただし著作権は譲渡されないため、ロゴそのものの改変や再配布はできません。</p>
+        </div>
+
+        <div class="option-item option-item--highlight">
+          <div class="option-header">
+            <span class="option-name">著作権完全譲渡パック（AIデータ納品込み）</span>
+            <span class="option-price">ライトプラン：基本料金の60%<br>
+                スタンダードプラン：基本料金半額の60%</span>
+          </div>
+          <p class="option-desc">将来的な商標登録や、自社でロゴの色・形を自由に編集・改変して運用したい方向け。AIデータの納品費用（通常¥10,000）があらかじめ含まれたお得なパックです。<br>
+          ロゴの著作権は通常デザイナーに帰属します。将来的な改変・再制作・商標登録等を自由に行いたい場合にご利用ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">4. 派生バリエーション展開</h2>
+      <p class="section-lead">メインのロゴが1個確定した後に、展開パターンを追加するメニューです。</p>
+
+      <div class="variation-grid">
+        <div class="variation-block">
+          <h3 class="variation-block-title">タイムチャージ</h3>
+          <p class="variation-block-price">¥5,000〜 / 1時間</p>
+          <p class="variation-block-desc">その他の組み方・SNSアイコン用・名刺の背景用パターンなど、細々とした複数パーツをまとめて実働時間で精算したい場合におすすめ。</p>
+        </div>
+
+        <div class="variation-block">
+          <h3 class="variation-block-title">パーツ単位での固定精算</h3>
+          <div class="variation-price-list">
+            <div class="variation-price-item">
+              <span>縦組・横組バリエーション追加</span>
+              <span>＋¥5,000〜 / 1パターン</span>
+            </div>
+            <div class="variation-price-item">
+              <span>ファビコン・SNSアイコン用（シンボル抽出）</span>
+              <span>＋¥3,000〜 / 1パターン</span>
+            </div>
+            <div class="variation-price-item">
+              <span>モノクロ・ネガポジ反転用データ作成</span>
+              <span>＋¥3,000〜 / 1パターン</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AIボット ===== -->
+    <section class="detail-section" id="bot-section">
+      <h2 class="section-title">5. AIボットで相談しながら選ぶ</h2>
+      <p class="section-lead">いくつかの質問に答えるだけで、あなたに合ったプランとオプションを整理できます。そのまま料金シミュレーターへ引き継がれます。</p>
+
+      <button class="skip-to-sim" onclick="skipToSim()">→ シミュレーターを直接使う</button>
+
+      <div class="bot-entry-wrap" id="bot-wrap">
+        <div class="bot-entry-header">
+          <div class="bot-avatar" aria-hidden="true">🤖</div>
+          <div>
+            <div class="bot-entry-title">サカイ アシスタント</div>
+            <div class="bot-entry-sub">ロゴデザイン相談ボット</div>
+          </div>
+        </div>
+        <div class="bot-divider"></div>
+        <div class="bot-progress-wrap">
+          <div class="bot-progress-fill" id="bot-progress" style="width:0%"></div>
+        </div>
+        <div class="bot-chat" id="bot-chat"></div>
+        <div id="bot-cta-area"></div>
+      </div>
+    </section>
+
+    <!-- モーダル -->
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-box">
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-body" id="modal-body"></div>
+        <button class="modal-close-btn" onclick="closeModal()">閉じる</button>
+      </div>
+    </div>
+
+    <section class="detail-section simulator-section" id="simulator-anchor">
+      <h2 class="section-title">6. 料金シミュレーター</h2>
+      <p class="section-lead">ステップに沿ってご希望の条件を選ぶと、リアルタイムで自動見積もりの内訳が表示されます。</p>
+
+      <div class="simulator">
+
+        <div class="step-block" id="step1">
+          <div class="step-label">
+            <div class="step-num" id="num1">1</div>
+            <p class="sim-group-label" style="margin-bottom:0;">基本プランを選択</p>
+          </div>
+          <div class="sim-radio-list">
+            <label class="sim-radio-item">
+              <input type="radio" name="flow-plan" value="35000" onchange="selectPlanFlow('one')">
+              <span class="sim-radio-box"></span>
+              <span class="sim-radio-text">ライトプラン <em>¥35,000〜</em></span>
+            </label>
+            <label class="sim-radio-item">
+              <input type="radio" name="flow-plan" value="60000" onchange="selectPlanFlow('three')">
+              <span class="sim-radio-box"></span>
+              <span class="sim-radio-text">スタンダードプラン <em>¥70,000〜</em></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="step-block hidden" id="step2">
+          <div class="step-label">
+            <div class="step-num" id="num2">2</div>
+            <p class="sim-group-label" style="margin-bottom:0;">追加オプション（複数選択可）</p>
+          </div>
+          <div class="sim-check-list">
+            <label class="sim-check-item">
+              <input type="checkbox" name="flow-option" value="10000" id="opt-ai-single">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">AIデータ（Illustrator形式）納品 <em>+¥10,000</em></span>
+            </label>
+
+            <label class="sim-check-item">
+              <input type="checkbox" name="flow-option" value="0" id="opt-copyright">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">著作権完全譲渡パック（AIデータ込み）<em>+ライトプラン：基本料金の60%<br>
+                スタンダードプラン：基本料金半額の60%</em></span>
+            </label>
+
+            <label class="sim-check-item">
+              <input type="checkbox" name="flow-option" value="10000" id="opt-guide-simple">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">デザインガイドライン（簡易版）<em>+¥10,000</em></span>
+            </label>
+
+            <label class="sim-check-item">
+              <input type="checkbox" name="flow-option" value="30000" id="opt-guide-full">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">デザインガイドライン（本格版）<em>+¥30,000</em></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="step-block hidden" id="step3">
+          <div class="step-label">
+            <div class="step-num" id="num3">3</div>
+            <p class="sim-group-label" style="margin-bottom:0;">バリエーション展開（パーツ単位）</p>
+          </div>
+          
+          <div class="sim-check-list">
+            <div>
+              <label class="sim-check-item">
+                <input type="checkbox" name="flow-deriv-toggle" id="toggle-layout" value="5000">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">縦組・横組バリエーション <em>+¥5,000〜 / 1パターン</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-layout">
+                <button class="counter-btn" onclick="changeDerivFlow('layout', -1)">−</button>
+                <span class="counter-val" id="val-layout">1</span>
+                <button class="counter-btn" onclick="changeDerivFlow('layout', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">パターン追加</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="sim-check-item">
+                <input type="checkbox" name="flow-deriv-toggle" id="toggle-icon" value="3000">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">ファビコン・SNSアイコン用 <em>+¥3,000〜 / 1パターン</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-icon">
+                <button class="counter-btn" onclick="changeDerivFlow('icon', -1)">−</button>
+                <span class="counter-val" id="val-icon">1</span>
+                <button class="counter-btn" onclick="changeDerivFlow('icon', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">パターン追加</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="sim-check-item">
+                <input type="checkbox" name="flow-deriv-toggle" id="toggle-color" value="3000">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">モノクロ・ネガポジ反転用 <em>+¥3,000〜 / 1パターン</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-color">
+                <button class="counter-btn" onclick="changeDerivFlow('color', -1)">−</button>
+                <span class="counter-val" id="val-color">1</span>
+                <button class="counter-btn" onclick="changeDerivFlow('color', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">パターン追加</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-block hidden" id="summary-block" style="margin-bottom:0;">
+          <div class="sim-result" style="display:block; background:var(--white); padding:28px 24px;">
+            <p class="sim-group-label" style="border-bottom: 0.5px solid var(--border); padding-bottom:10px; margin-bottom:14px;">見積もり内訳</p>
+            
+            <div class="sim-summary-lines" id="summary-lines"></div>
+
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:18px; padding-top:14px; border-top:1px dashed var(--border);">
+              <span class="sim-result-label" style="font-weight:400;">お見積り目安 (税抜)</span>
+              <span class="sim-result-price" id="sim-total">¥0〜</span>
+            </div>
+          </div>
+          
+          <p class="sim-caption" style="margin-top:12px;">※ 表示金額はあくまで目安です。内容・ボリュームによって変動する場合があります。詳細はお問い合わせください。</p>
+
+          <div class="sim-cta">
+            <a href="../contact.html" class="sim-cta-btn" id="sim-cta-btn">この内容でお問い合わせ・ご相談</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-sns">
+      <a href="https://www.instagram.com/sakaidesignatelier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="../インスタグラム.png" alt="Instagram">
+      </a>
+    </div>
+    <div class="footer-logo">サカイデザインアトリエ</div>
+    <div class="footer-copy">&copy; 2026 サカイデザインアトリエ &nbsp;|&nbsp; sakai.mitsuki.design@gmail.com</div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('drawer');
+    const overlay   = document.getElementById('drawer-overlay');
+    const closeBtn  = document.getElementById('drawer-close');
+    function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+    hamburger.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+  </script>
+
+  <script>
+   // 状態管理用オブジェクト
+    let currentPlan = null; // 'one' or 'three'
+    let flowDerivs = {
+      layout: { checked: false, count: 1, unitPrice: 5000, label: '縦組・横組バリエーション' },
+      icon:   { checked: false, count: 1, unitPrice: 3000, label: 'ファビコン・SNSアイコン用' },
+      color:  { checked: false, count: 1, unitPrice: 3000, label: 'モノクロ・ネガポジ反転用' }
+    };
+
+    // メインプランカードおよびラジオボタンの連動
+    function selectPlanFlow(planType) {
+      currentPlan = planType;
+      
+      const radios = document.querySelectorAll('input[name="flow-plan"]');
+      if (planType === 'one') {
+        radios[0].checked = true;
+        document.getElementById('card-one').classList.add('selected');
+        document.getElementById('card-three').classList.remove('selected');
+      } else {
+        radios[1].checked = true;
+        document.getElementById('card-three').classList.add('selected');
+        document.getElementById('card-one').classList.remove('selected');
+      }
+
+      document.getElementById('num1').classList.add('done');
+      document.getElementById('step2').classList.remove('hidden');
+      document.getElementById('step3').classList.remove('hidden');
+      document.getElementById('summary-block').classList.remove('hidden');
+
+      calcFlowTotal();
+    }
+
+    // 派生パーツの数量変更
+    function changeDerivFlow(type, delta) {
+      if (!flowDerivs[type].checked) return;
+      flowDerivs[type].count = Math.max(1, flowDerivs[type].count + delta);
+      document.getElementById(`val-${type}`).textContent = flowDerivs[type].count;
+      calcFlowTotal();
+    }
+
+   // 計算と明細生成、お問合せリンク生成のコアロジック
+    function calcFlowTotal() {
+      if (!currentPlan) return;
+
+      // プランごとの基本料金（画面表示の35,000円 / 70,000円に正しく修正）
+      const planBase = currentPlan === 'one' ? 35000 : 70000; 
+      let lines = [];
+      lines.push({ name: currentPlan === 'one' ? 'ライトプラン (基本料金)' : 'スタンダードプラン (基本料金)', price: planBase });
+
+      let optionsPrice = 0;
+      
+      // 1. 著作権パック と AI単体 の排他制御
+      const optCopyright = document.getElementById('opt-copyright');
+      const optAiSingle = document.getElementById('opt-ai-single');
+      
+      if (optCopyright.checked) {
+        // ★修正点：ライトプランは基本料金の60%、スタンダードプランは基本料金半額の60%
+        let copyrightFee = 0;
+        if (currentPlan === 'one') {
+          copyrightFee = Math.round(planBase * 0.6); // 35,000 * 0.6 = 21,000
+        } else {
+          copyrightFee = Math.round((planBase / 2) * 0.6); // (70,000 / 2) * 0.6 = 21,000
+        }
+        optionsPrice += copyrightFee;
+        lines.push({ name: '著作権完全譲渡パック (AIデータ込み)', price: copyrightFee });
+      } else if (optAiSingle.checked) {
+        optionsPrice += 10000;
+        lines.push({ name: 'AIデータ（Illustrator形式）納品', price: 10000 });
+      }
+
+      // 2. ガイドラインの排他制御
+      const optGuideSimple = document.getElementById('opt-guide-simple');
+      const optGuideFull = document.getElementById('opt-guide-full');
+
+      if (optGuideFull.checked) {
+        optionsPrice += 30000; // ★修正点：画面表示の30,000円通りに加算するよう修正
+        lines.push({ name: 'デザインガイドライン (本格版)', price: 30000 });
+      } else if (optGuideSimple.checked) {
+        optionsPrice += 10000;
+        lines.push({ name: 'デザインガイドライン (簡易版)', price: 10000 });
+      }
+
+      // 3. 派生バリエーションの計算
+      let derivPriceTotal = 0;
+      Object.keys(flowDerivs).forEach(key => {
+        const item = flowDerivs[key];
+        if (item.checked) {
+          const cost = item.unitPrice * item.count;
+          derivPriceTotal += cost;
+          lines.push({ name: `${item.label} (×${item.count})`, price: cost });
+        }
+      });
+
+      // 合計金額
+      const totalPrice = planBase + optionsPrice + derivPriceTotal;
+
+      // 内訳HTMLの出力
+      const summaryContainer = document.getElementById('summary-lines');
+      summaryContainer.innerHTML = lines.map(l => `
+        <div class="sim-summary-line">
+          <span>・${l.name}</span>
+          <span class="s-price">¥${l.price.toLocaleString()}〜</span>
+        </div>
+      `).join('');
+
+      // 合計金額テキスト更新
+      document.getElementById('sim-total').textContent = '¥' + totalPrice.toLocaleString() + '〜';
+
+      // ── お問い合わせページへの内訳自動引き継ぎ ──
+      let simText = '【シミュレーター見積もり内訳】\n';
+      lines.forEach(l => {
+        simText += `・${l.name}：¥${l.price.toLocaleString()}〜\n`;
+      });
+      simText += `\n概算合計金額（税抜）：¥${totalPrice.toLocaleString()}〜`;
+
+      const ctaBtn = document.getElementById('sim-cta-btn');
+      ctaBtn.href = `../contact.html?sim=${encodeURIComponent(simText)}`;
+    }
+    // ── イベントリスナーの設定 ──
+    const optAi = document.getElementById('opt-ai-single');
+    const optCopy = document.getElementById('opt-copyright');
+    const optGSimple = document.getElementById('opt-guide-simple');
+    const optGFull = document.getElementById('opt-guide-full');
+
+    optAi.addEventListener('change', () => { if (optAi.checked) optCopy.checked = false; calcFlowTotal(); });
+    optCopy.addEventListener('change', () => { if (optCopy.checked) optAi.checked = false; calcFlowTotal(); });
+    optGSimple.addEventListener('change', () => { if (optGSimple.checked) optGFull.checked = false; calcFlowTotal(); });
+    optGFull.addEventListener('change', () => { if (optGFull.checked) optGSimple.checked = false; calcFlowTotal(); });
+
+    ['layout', 'icon', 'color'].forEach(type => {
+      const toggle = document.getElementById(`toggle-${type}`);
+      const counter = document.getElementById(`counter-${type}`);
+      
+      toggle.addEventListener('change', () => {
+        flowDerivs[type].checked = toggle.checked;
+        if (toggle.checked) {
+          counter.classList.remove('hidden');
+        } else {
+          counter.classList.add('hidden');
+          flowDerivs[type].count = 1; 
+          document.getElementById(`val-${type}`).textContent = 1;
+        }
+        calcFlowTotal();
+      });
+    });
+  </script>
+
+  <script>
+    // ── モーダル定義 ──
+    const MODALS = {
+      copyright: {
+        title: '著作権完全譲渡とは？',
+        body: 'ロゴの著作権は、通常デザイナーに帰属します。このオプションを選ぶことで、著作権がお客様（会社・個人）に移転されます。<br><br>以下のような場合におすすめです：<br>・将来的に自分でロゴを改変・編集したい<br>・商標登録を検討している<br>・制作会社に渡して自由に使ってもらいたい<br><br>AIデータ（Illustrator形式）の納品も含まれたお得なパックです。'
+      },
+      aidata: {
+        title: 'AIデータ（Illustrator形式）とは？',
+        body: 'Adobe Illustratorで作成されたベクター形式のデータです。印刷会社や制作会社への入稿時に必要になることがあります。<br><br>ただし、このデータの納品だけでは著作権は移転されません。ロゴの改変・再配布を行いたい場合は「著作権完全譲渡パック」をご選択ください。'
+      }
+    };
+
+    function openModal(key) {
+      const m = MODALS[key];
+      if (!m) return;
+      document.getElementById('modal-title').textContent = m.title;
+      document.getElementById('modal-body').innerHTML = m.body;
+      document.getElementById('modal-overlay').classList.add('open');
+    }
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+    }
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // ── ボット設定 ──
+    const BOT_QUESTIONS = [
+      {
+        id: 'plan',
+        text: 'ロゴデザインにご興味いただきありがとうございます。\nまず、基本プランを教えてください。',
+        choices: [
+          { label: 'ライトプラン（¥35,000〜）\nラフ3案 → 本制作1案', value: 'one' },
+          { label: 'スタンダードプラン（¥70,000〜）\nラフ3案 → 本制作3案すべて', value: 'three' }
+        ]
+      },
+      {
+        id: 'ai',
+        text: 'AIデータ（Illustrator形式）は必要ですか？\n印刷会社への入稿などに使えます。',
+        helpKey: 'aidata',
+        choices: [
+          { label: 'はい（+¥10,000）', value: true },
+          { label: 'いいえ', value: false }
+        ]
+      },
+      {
+        id: 'copyright',
+        text: '著作権完全譲渡パックはご希望ですか？\n商標登録や自由な改変・運用をご検討の方向けです。',
+        helpKey: 'copyright',
+        choices: [
+          { label: 'はい（基本料金の60%〜）', value: true },
+          { label: 'いいえ', value: false }
+        ]
+      },
+      {
+        id: 'guide',
+        text: 'デザインガイドラインは必要ですか？\nロゴの正しい使い方・カラー規定などをまとめたPDF資料です。',
+        choices: [
+          { label: '不要', value: 'none' },
+          { label: '簡易版（+¥10,000）', value: 'simple' },
+          { label: '本格版（+¥30,000）', value: 'full' }
+        ]
+      },
+      {
+        id: 'variation',
+        text: '派生バリエーション（縦横組み・アイコン用・モノクロ等）の展開は必要ですか？\n後からシミュレーターで詳細を選べます。',
+        choices: [
+          { label: '不要', value: false },
+          { label: 'はい、追加したい', value: true }
+        ]
+      }
+    ];
+
+    let botAnswers = {};
+    let currentQ = 0;
+
+    function renderBot() {
+      const chat = document.getElementById('bot-chat');
+      chat.innerHTML = '';
+
+      for (let i = 0; i <= currentQ && i < BOT_QUESTIONS.length; i++) {
+        const q = BOT_QUESTIONS[i];
+
+        // ボットのバブル
+        const wrap = document.createElement('div');
+        wrap.className = 'bot-bubble-wrap bot-fadein';
+        const avatar = document.createElement('div');
+        avatar.className = 'bot-bubble-avatar';
+        avatar.textContent = '✦';
+        const bubble = document.createElement('div');
+        bubble.className = 'bot-bubble';
+        let txt = q.text.replace(/\n/g, '<br>');
+        if (q.helpKey) {
+          txt += ` <button class="help-q" onclick="openModal('${q.helpKey}')" aria-label="説明を見る">?</button>`;
+        }
+        bubble.innerHTML = txt;
+        wrap.appendChild(avatar);
+        wrap.appendChild(bubble);
+        chat.appendChild(wrap);
+
+        if (botAnswers[q.id] !== undefined) {
+          // ユーザーの回答バブル
+          const chosen = q.choices.find(c => c.value === botAnswers[q.id]);
+          const userBubble = document.createElement('div');
+          userBubble.className = 'user-bubble bot-fadein';
+          userBubble.textContent = chosen ? chosen.label.split('\n')[0] : String(botAnswers[q.id]);
+          chat.appendChild(userBubble);
+        } else if (i === currentQ) {
+          // 選択肢ボタン
+          const choicesWrap = document.createElement('div');
+          choicesWrap.className = 'bot-choices bot-fadein';
+          q.choices.forEach(c => {
+            const btn = document.createElement('button');
+            btn.className = 'bot-choice-btn';
+            btn.innerHTML = c.label.replace(/\n/g, '<br>');
+            btn.style.textAlign = 'left';
+            btn.onclick = () => botAnswer(q.id, c.value);
+            choicesWrap.appendChild(btn);
+          });
+          chat.appendChild(choicesWrap);
+        }
+      }
+
+      // プログレスバー
+      const pct = Math.round((currentQ / BOT_QUESTIONS.length) * 100);
+      document.getElementById('bot-progress').style.width = pct + '%';
+
+      // 完了後CTA
+      const ctaArea = document.getElementById('bot-cta-area');
+      if (currentQ >= BOT_QUESTIONS.length) {
+        ctaArea.innerHTML = '';
+        const finalBubbleWrap = document.createElement('div');
+        finalBubbleWrap.className = 'bot-bubble-wrap bot-fadein';
+        const av = document.createElement('div');
+        av.className = 'bot-bubble-avatar';
+        av.textContent = '✦';
+        const fb = document.createElement('div');
+        fb.className = 'bot-bubble';
+        fb.textContent = 'ありがとうございます！選択内容をシミュレーターに反映しました。内容を確認・編集したうえで、お問い合わせへお進みください。';
+        finalBubbleWrap.appendChild(av);
+        finalBubbleWrap.appendChild(fb);
+        chat.appendChild(finalBubbleWrap);
+
+        const btn = document.createElement('button');
+        btn.className = 'bot-to-sim-btn bot-fadein';
+        btn.textContent = 'シミュレーターで確認・編集する →';
+        btn.onclick = () => {
+          applyBotAnswers();
+          document.getElementById('simulator-anchor').scrollIntoView({ behavior: 'smooth' });
+        };
+        ctaArea.appendChild(btn);
+      } else {
+        ctaArea.innerHTML = '';
+      }
+
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function botAnswer(qId, val) {
+      botAnswers[qId] = val;
+      currentQ++;
+      setTimeout(renderBot, 100);
+    }
+
+    function applyBotAnswers() {
+      if (botAnswers.plan) selectPlanFlow(botAnswers.plan);
+
+      const optAiEl = document.getElementById('opt-ai-single');
+      const optCpEl = document.getElementById('opt-copyright');
+      const optGsEl = document.getElementById('opt-guide-simple');
+      const optGfEl = document.getElementById('opt-guide-full');
+
+      if (botAnswers.copyright === true) {
+        optCpEl.checked = true;
+        optAiEl.checked = false;
+      } else if (botAnswers.ai === true) {
+        optAiEl.checked = true;
+        optCpEl.checked = false;
+      }
+
+      if (botAnswers.guide === 'simple') { optGsEl.checked = true; optGfEl.checked = false; }
+      else if (botAnswers.guide === 'full') { optGfEl.checked = true; optGsEl.checked = false; }
+
+      if (botAnswers.variation === true) {
+        const layoutToggle = document.getElementById('toggle-layout');
+        if (layoutToggle) {
+          layoutToggle.checked = true;
+          flowDerivs.layout.checked = true;
+          document.getElementById('counter-layout').classList.remove('hidden');
+        }
+      }
+
+      calcFlowTotal();
+
+      // ステップを表示
+      document.getElementById('step2').classList.remove('hidden');
+      document.getElementById('step3').classList.remove('hidden');
+      document.getElementById('summary-block').classList.remove('hidden');
+      if (botAnswers.plan) document.getElementById('num1').classList.add('done');
+    }
+
+    function skipToSim() {
+      document.getElementById('simulator-anchor').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 初回レンダリング
+    renderBot();
+  </script>
+
+  <script src="../protect.js"></script>
+</body>
+</html>

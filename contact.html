@@ -32,7 +32,7 @@
   <nav id="global-nav">
     <a href="index.html">Home</a>
     <a href="../works/works.html">Works</a>
-    <a href="#">Service</a>
+    <a href="../service/service.html">Service</a>
     <a href="flow.html">Flow</a>
     <a href="about.html">About</a>
     <a href="contact.html" class="active">Contact</a>
@@ -44,7 +44,7 @@
     <nav class="drawer-nav">
       <a href="index.html">Home</a>
       <a href="../works/works.html">Works</a>
-      <a href="#">Service</a>
+      <a href="../service/service.html">Service</a>
       <a href="flow.html">Flow</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="active">Contact</a>
@@ -81,15 +81,22 @@
           <label>ご依頼カテゴリー</label>
           <div class="checkbox-list">
             <label class="checkbox-item"><input type="checkbox" name="category" value="ロゴデザイン">ロゴデザイン（お店や会社、ブランドのロゴ・シンボルマーク）</label>
-            <label class="checkbox-item"><input type="checkbox" name="category" value="ブランディング">ブランディング（ロゴや名刺などを含めた、事業全体の見せ方・世界観づくり）</label>
             <label class="checkbox-item"><input type="checkbox" name="category" value="パッケージデザイン">パッケージデザイン（商品の箱・袋・ラベルなど）</label>
-            <label class="checkbox-item"><input type="checkbox" name="category" value="ポスター・看板制作">ポスター・看板制作</label>
-            <label class="checkbox-item"><input type="checkbox" name="category" value="チラシ・フライヤー・パンフレット制作">チラシ・フライヤー・パンフレット制作</label>
-            <label class="checkbox-item"><input type="checkbox" name="category" value="冊子・広報誌制作">冊子・広報誌制作（本、広報誌、会報、ニュースレターなど）</label>
+            <label class="checkbox-item"><input type="checkbox" name="category" value="ポスター・看板制作">ポスター制作</label>
+            <label class="checkbox-item"><input type="checkbox" name="category" value="チラシ・フライヤー制作">チラシ・フライヤー制作</label>
+            <label class="checkbox-item"><input type="checkbox" name="category" value="リーフレット制作">リーフレット制作</label>
+            <label class="checkbox-item"><input type="checkbox" name="category" value="冊子・広報誌制作">冊子・パンフレット制作（本、広報誌、会報、ニュースレターなど）</label>
             <label class="checkbox-item"><input type="checkbox" name="category" value="情報整理・図解制作">情報整理・図解制作（複雑な情報やデータを、図やイラストでわかりやすくまとめるデザイン）</label>
             <label class="checkbox-item"><input type="checkbox" name="category" value="名刺・ショップカード制作">名刺・ショップカード制作</label>
+            <label class="checkbox-item"><input type="checkbox" name="category" value="ブランディング">ブランディング（ロゴや名刺などを含めた、事業全体の見せ方・世界観づくり）</label>
             <label class="checkbox-item"><input type="checkbox" name="category" value="その他">その他・まだ決まっていない（「こんなこともできる？」という段階でもお気軽にご相談ください）</label>
           </div>
+        </div>
+
+        <div class="form-group" id="sim-group" style="display:none;">
+          <label>シミュレーター概算見積もり</label>
+          <textarea name="simulator" id="sim-field" rows="6" readonly style="background:#fafafa; color:#666; font-size:11px; line-height:1.8;"></textarea>
+          <p style="font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#999; margin-top:4px; letter-spacing:0.04em;">※ ロゴデザイン料金シミュレーターの結果が自動入力されています</p>
         </div>
 
         <div class="form-group">
@@ -160,6 +167,36 @@
   </footer>
 
   <script>
+  // シミュレーター引き継ぎ：URLパラメーター ?sim=... を受け取って自動入力
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const simVal = params.get('sim');
+    if (simVal) {
+      const group = document.getElementById('sim-group');
+      const field = document.getElementById('sim-field');
+      field.value = decodeURIComponent(simVal);
+      group.style.display = '';
+
+      // from パラメーターでカテゴリーを自動ON（なければロゴデザイン）
+      const from = params.get('from');
+       const categoryMap = {
+        'logo':    'ロゴデザイン',
+        'package': 'パッケージデザイン',
+        'poster':  'ポスター・看板制作',
+        'flyer':  'チラシ・フライヤー制作',
+        'leaflet':  'リーフレット制作',
+         'editorial':  '冊子・広報誌制作',
+         'infographic':  '情報整理・図解制作',
+         'card':  '名刺・ショップカード制作',
+      };
+      const autoCategory = categoryMap[from] || '';
+      const autoCheckbox = document.querySelector(`input[name="category"][value="${autoCategory}"]`);
+      if (autoCheckbox) autoCheckbox.checked = true;
+    }
+  })();
+  </script>
+
+  <script>
   // ハンバーガーメニュー
   const hamburger = document.getElementById('hamburger');
   const drawer    = document.getElementById('drawer');
@@ -184,11 +221,12 @@
       .map(cb => cb.value).join('、');
 
     const templateParams = {
-      name:     form.name.value,
-      company:  form.company.value,
-      email:    form.email.value,
-      category: categories || '未選択',
-      message:  form.message.value
+      name:      form.name.value,
+      company:   form.company.value,
+      email:     form.email.value,
+      category:  categories || '未選択',
+      simulator: form.simulator ? form.simulator.value : '',
+      message:   form.message.value
     };
 
     // 境さんへの通知メール

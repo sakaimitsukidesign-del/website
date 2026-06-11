@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noai, noimageai">
+  <title>パッケージデザイン詳細 | サカイデザインアトリエ</title>
+  <link rel="icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="package.css">
+  <link rel="stylesheet" href="../protect.css">
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" class="logo-wrap">
+      <img src="../ロゴ-01.png" alt="サカイデザインアトリエ ロゴ" class="logo-img">
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="global-nav">
+    <a href="../index.html">Home</a>
+    <a href="../works/works.html">Works</a>
+    <a href="service.html" class="active">Service</a>
+    <a href="../flow.html">Flow</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+
+  <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawer-close" aria-label="閉じる">&#x2715;</button>
+    <nav class="drawer-nav">
+      <a href="../index.html">Home</a>
+      <a href="../works/works.html">Works</a>
+      <a href="service.html" class="active">Service</a>
+      <a href="../flow.html">Flow</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="service.html">Service</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">パッケージデザイン</span>
+  </div>
+
+  <main class="detail-wrap">
+
+    <h1 class="page-title">パッケージデザイン</h1>
+
+    <section class="detail-section">
+      <h2 class="section-title">1. 基本料金</h2>
+      <p class="section-lead">事前のラフ提案数は共通（3案）とし、本制作（ブラッシュアップ）に進める個数でプランが異なります。<br>
+        商品やブランドの方向性を整理し、パッケージデザインを制作します。<br>
+      例：商品ラベル、シール、タグ、帯、パッケージ箱、袋（パウチ・紙袋など）、台紙、包装紙、など</p>
+
+      <div class="plan-grid-3">
+        <div class="plan-card" id="card-light" onclick="selectPlanFlow('light')">
+          <div class="plan-header">
+            <span class="plan-name">ライトプラン</span>
+            <span class="plan-price">¥25,000〜</span>
+          </div>
+          <ul class="plan-list">
+            <li>ラフ提案：3案</li>
+            <li>本制作：1案（ラフから1案を選択）</li>
+            <li>修正：採用案の微調整 2回まで無料</li>
+            <li>印刷・利用に必要なデータを納品</li>
+          </ul>
+          <p class="plan-note">★ 本制作前なら差額でスタンダードプランへ切り替え可</p>
+        </div>
+
+        <div class="plan-card" id="card-standard" onclick="selectPlanFlow('standard')">
+          <div class="plan-header">
+            <span class="plan-name">スタンダードプラン</span>
+            <span class="plan-price">¥50,000〜</span>
+          </div>
+          <ul class="plan-list">
+            <li>ラフ提案：3案</li>
+            <li>本制作：3案（すべての方向性を本制作で比較）</li>
+            <li>修正：採用案の微調整 2回まで無料</li>
+            <li>印刷・利用に必要なデータを納品</li>
+          </ul>
+        </div>
+
+        <div class="plan-card" id="card-data" onclick="selectPlanFlow('data')">
+          <div class="plan-header">
+            <span class="plan-name">データ作成プラン</span>
+            <span class="plan-price">¥5,000〜</span>
+          </div>
+          <div class="plan-tag">デザイン開発不要の方向け</div>
+          <ul class="plan-list">
+            <li>既存ロゴや既存デザインの配置</li>
+            <li>印刷会社支給テンプレートへの流し込み</li>
+            <li>サイズ調整・印刷用データ作成</li>
+            <li>軽微な調整 1回まで</li>
+          </ul>
+          <p class="plan-note">ロゴなどが完成済みで箱・ラベルに配置したいだけの方に</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <p class="info-box-label">＜プラン切り替えについて＞</p>
+        <p>本制作前であれば、差額でデータ作成プラン → ライトプランへ、ライトプラン → スタンダードプランへ切り替え可能です。</p>
+        <p class="info-box-note">本制作着手後は切り替え不可 ／ 消化済みの修正回数は引き継ぎ</p>
+      </div>
+
+      <div class="info-box" style="margin-top: 16px;">
+        <p class="info-box-label">＜ご支給いただくもの・前提条件＞</p>
+        <p>商品の基本情報、ロゴ、掲載文言（原材料・製造元等の法的表記含むテキストデータ）／必要な写真素材／ 印刷会社様が発行した「展開図（ダイライン）」および「入稿仕様書」</p>
+        <p class="info-box-note">印刷会社様との直接の契約・印刷費のお支払いはクライアント様側で行っていただきます。</p>
+        <p class="info-box-note">価格はシール・タグ・簡易ラベルなど小規模なパッケージを想定しています。箱・袋・複雑な形状は別途お見積もりとなります。</p>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">2. 納品データについて</h2>
+      <p class="section-lead">用途に応じて最適な形式で納品いたします。印刷会社指定のテンプレートがある場合は対応可能です。</p>
+
+      <ul class="dot-list">
+        <li>用途に応じて最適な形式で納品（印刷入稿用PDF、各種データ形式など）</li>
+        <li>印刷会社指定のテンプレートへの対応可能</li>
+        <li>制作元データ（編集可能データ）の納品は別途オプション</li>
+      </ul>
+
+      <div class="price-note-list">
+        <div class="price-note-item">
+          <span class="price-note-label">納品後の追加データ作成・仕様調整</span>
+          <span class="price-note-price">¥3,000〜</span>
+        </div>
+        <div class="price-note-item">
+          <span class="price-note-label">特殊仕様への対応</span>
+          <span class="price-note-price">別途見積り</span>
+        </div>
+      </div>
+      <p class="caption">※ 特殊な仕様への対応や、納品後の追加調整が必要な場合は別途お見積りとなります。</p>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">3. 追加オプション</h2>
+      <p class="section-lead"><!--権利の取り扱いや、ブランド展開を強固にするためのカスタマイズ項目です。--></p>
+
+      <div class="option-list">
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">追加修正（3回目以降）</span>
+            <span class="option-price">¥5,000〜 / 1回</span>
+          </div>
+          <p class="option-desc">カラー変更や軽微なバランス調整などの微修正が対象。大幅な方向転換・作り直しは別途見積もり。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">オリジナルイラスト制作</span>
+            <span class="option-price">¥5,000〜</span>
+          </div>
+          <p class="option-desc">内容に応じて変動。必要に応じて提携イラストレーターと連携して対応いたします。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">写真加工（軽微な補正）</span>
+            <span class="option-price">¥1,000〜 / 枚</span>
+          </div>
+          <p class="option-desc">明るさ・色味の調整など、基本的な見栄えの補正を行います。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">写真加工（合成・レタッチ）</span>
+            <span class="option-price">¥3,000〜 / 枚</span>
+          </div>
+          <p class="option-desc">不要物の除去、肌補正、複数写真の組み合わせなど、難易度に応じた高度な編集を行います。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">写真加工（ビジュアル制作）</span>
+            <span class="option-price">¥10,000〜 / 枚</span>
+          </div>
+          <p class="option-desc">写真素材をベースにしたグラフィックアート加工や、メインビジュアルとしての大きな改変・グラフィック構築を行います。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">商品イメージ作成</span>
+            <span class="option-price">¥3,000〜 / 1点</span>
+          </div>
+          <p class="option-desc">SNS掲載用・ECサイト掲載用・提案資料への二次利用可。実物撮影ではありません。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">デザインガイドライン</span>
+            <span class="option-price">¥10,000〜</span>
+          </div>
+          <p class="option-desc">ロゴ・カラー・パッケージ運用ルールをまとめた資料を作成します。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">制作元データ納品</span>
+            <span class="option-price">¥10,000</span>
+          </div>
+          <p class="option-desc">編集可能な元データを納品します。表示内容の更新・サイズ調整・印刷会社への入稿・社内での運用が可能です。著作権は譲渡されません。デザインそのものの改変や再配布はできません。</p>
+        </div>
+
+        <div class="option-item option-item--highlight">
+          <div class="option-header">
+            <span class="option-name">著作権完全譲渡パック（制作元データ納品込み）</span>
+            <span class="option-price">ライトプラン：基本料金の60%<br>
+                スタンダードプラン：基本料金半額の60%</span>
+          </div>
+          <p class="option-desc">将来的な改変・再制作・第三者への制作委託を自由に行いたい方向け。制作元データの納品費用（通常¥10,000）があらかじめ含まれたお得なパックです。パッケージの著作権は通常デザイナーに帰属します。将来的な改変・再制作・商標登録等を自由に行いたい場合にご利用ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">4. 派生展開（パーツ追加）</h2>
+      <p class="section-lead">商品展開やシリーズ展開に対応します。メインのデザインが確定した後に追加できます。</p>
+
+      <div class="variation-grid">
+        <div class="variation-block">
+          <h3 class="variation-block-title">タイムチャージ</h3>
+          <p class="variation-block-price">¥5,000〜 / 1時間</p>
+          <p class="variation-block-desc">細々とした複数パーツをまとめて実働時間で精算したい場合におすすめ。</p>
+        </div>
+
+        <div class="variation-block">
+          <h3 class="variation-block-title">パーツ単位での固定精算</h3>
+          <div class="variation-price-list">
+            <div class="variation-price-item">
+              <span>色違い・フレーバー違い等</span>
+              <span>+ライトプラン：基本料金の30%<br>
+                スタンダードプラン：基本料金半額の30% / 1種</span>
+            </div>
+            <div class="variation-price-item">
+              <span>サイズバリエーション・リサイズ展開</span>
+              <span>+ライトプラン：基本料金の50%<br>
+                スタンダードプラン：基本料金半額の50% / 1種</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section simulator-section" id="simulator-anchor">
+      <h2 class="section-title">料金シミュレーター</h2>
+      <p class="section-lead">ステップに沿ってご希望の条件を選ぶと、リアルタイムで自動見積もりの内訳が表示されます。</p>
+
+      <div class="simulator">
+
+        <div class="step-block" id="step1">
+          <div class="step-label">
+            <div class="step-num" id="num1">1</div>
+            <p class="sim-group-label" style="margin-bottom:0;">基本プランを選択</p>
+          </div>
+          <div class="sim-radio-list">
+            <label class="sim-radio-item">
+              <input type="radio" name="flow-plan" value="25000" onchange="selectPlanFlow('light')">
+              <span class="sim-radio-box"></span>
+              <span class="sim-radio-text">ライトプラン <em>¥25,000〜</em></span>
+            </label>
+            <label class="sim-radio-item">
+              <input type="radio" name="flow-plan" value="50000" onchange="selectPlanFlow('standard')">
+              <span class="sim-radio-box"></span>
+              <span class="sim-radio-text">スタンダードプラン <em>¥50,000〜</em></span>
+            </label>
+            <label class="sim-radio-item">
+              <input type="radio" name="flow-plan" value="5000" onchange="selectPlanFlow('data')">
+              <span class="sim-radio-box"></span>
+              <span class="sim-radio-text">データ作成プラン <em>¥5,000〜</em></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="step-block hidden" id="step2">
+          <div class="step-label">
+            <div class="step-num" id="num2">2</div>
+            <p class="sim-group-label" style="margin-bottom:0;">追加オプション（複数選択可）</p>
+          </div>
+          <div class="sim-check-list">
+
+            <label class="sim-check-item" id="label-illust">
+              <input type="checkbox" name="flow-option" id="opt-illust">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">オリジナルイラスト制作 <em>+¥5,000〜</em></span>
+            </label>
+
+            <div>
+              <label class="sim-check-item" id="label-photo-light">
+                <input type="checkbox" name="flow-option" id="opt-photo-light">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">写真加工（軽微な補正） <em>+¥1,000〜 / 枚</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-photo-light">
+                <button class="counter-btn" onclick="changePhotoCount('light', -1)">−</button>
+                <span class="counter-val" id="val-photo-light">1</span>
+                <button class="counter-btn" onclick="changePhotoCount('light', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">枚</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="sim-check-item" id="label-photo-medium">
+                <input type="checkbox" name="flow-option" id="opt-photo-medium">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">写真加工（合成・レタッチ） <em>+¥3,000〜 / 枚</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-photo-medium">
+                <button class="counter-btn" onclick="changePhotoCount('medium', -1)">−</button>
+                <span class="counter-val" id="val-photo-medium">1</span>
+                <button class="counter-btn" onclick="changePhotoCount('medium', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">枚</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="sim-check-item" id="label-photo-heavy">
+                <input type="checkbox" name="flow-option" id="opt-photo-heavy">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">写真加工（ビジュアル制作） <em>+¥10,000〜 / 枚</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-photo-heavy">
+                <button class="counter-btn" onclick="changePhotoCount('heavy', -1)">−</button>
+                <span class="counter-val" id="val-photo-heavy">1</span>
+                <button class="counter-btn" onclick="changePhotoCount('heavy', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">枚</span>
+              </div>
+            </div>
+
+            <label class="sim-check-item" id="label-image">
+              <input type="checkbox" name="flow-option" id="opt-image">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">商品イメージ作成 <em>+¥3,000〜 / 1点</em></span>
+            </label>
+            <div class="sim-inline-counter hidden" id="counter-image">
+              <button class="counter-btn" onclick="changeImageCount(-1)">−</button>
+              <span class="counter-val" id="val-image">1</span>
+              <button class="counter-btn" onclick="changeImageCount(1)">+</button>
+              <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">点</span>
+            </div>
+
+            <label class="sim-check-item" id="label-guide">
+              <input type="checkbox" name="flow-option" id="opt-guide">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">デザインガイドライン <em>+¥10,000〜</em></span>
+            </label>
+
+            <label class="sim-check-item" id="label-source">
+              <input type="checkbox" name="flow-option" id="opt-source">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">制作元データ納品 <em>+¥10,000</em></span>
+            </label>
+
+            <label class="sim-check-item" id="label-copyright">
+              <input type="checkbox" name="flow-option" id="opt-copyright">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">著作権完全譲渡パック（制作元データ込み）<em>+ライトプラン：基本料金の60%<br>
+                スタンダードプラン：基本料金半額の60%</em></span>
+            </label>
+
+          </div>
+        </div>
+
+        <div class="step-block hidden" id="step3">
+          <div class="step-label">
+            <div class="step-num" id="num3">3</div>
+            <p class="sim-group-label" style="margin-bottom:0;">派生展開（パーツ追加）</p>
+          </div>
+          <div class="sim-check-list">
+
+            <div>
+              <label class="sim-check-item" id="label-flavor">
+                <input type="checkbox" name="flow-deriv-toggle" id="toggle-flavor">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">色違い・フレーバー違い等 <em>+ライトプラン：基本料金の30%<br>
+                スタンダードプラン：基本料金半額の30% / 1種</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-flavor">
+                <button class="counter-btn" onclick="changeDerivFlow('flavor', -1)">−</button>
+                <span class="counter-val" id="val-flavor">1</span>
+                <button class="counter-btn" onclick="changeDerivFlow('flavor', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">種追加</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="sim-check-item" id="label-size">
+                <input type="checkbox" name="flow-deriv-toggle" id="toggle-size">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">サイズバリエーション・リサイズ展開 <em>+ライトプラン：基本料金の50%<br>
+                スタンダードプラン：基本料金半額の50% / 1種</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-size">
+                <button class="counter-btn" onclick="changeDerivFlow('size', -1)">−</button>
+                <span class="counter-val" id="val-size">1</span>
+                <button class="counter-btn" onclick="changeDerivFlow('size', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">種追加</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="step-block hidden" id="summary-block" style="margin-bottom:0;">
+          <div class="sim-result" style="display:block; background:var(--white); padding:28px 24px;">
+            <p class="sim-group-label" style="border-bottom: 0.5px solid var(--border); padding-bottom:10px; margin-bottom:14px;">見積もり内訳</p>
+            <div class="sim-summary-lines" id="summary-lines"></div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:18px; padding-top:14px; border-top:1px dashed var(--border);">
+              <span class="sim-result-label" style="font-weight:400;">お見積り目安 (税抜)</span>
+              <span class="sim-result-price" id="sim-total">¥0〜</span>
+            </div>
+          </div>
+
+          <p class="sim-caption" style="margin-top:12px;">※ 表示金額はあくまで目安です。内容・ボリュームによって変動する場合があります。詳細はお問い合わせください。</p>
+
+          <div class="sim-cta">
+            <a href="../contact.html?from=package" class="sim-cta-btn" id="sim-cta-btn">この内容でお問い合わせ・ご相談</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-sns">
+      <a href="https://www.instagram.com/sakaidesignatelier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="../インスタグラム.png" alt="Instagram">
+      </a>
+    </div>
+    <div class="footer-logo">サカイデザインアトリエ</div>
+    <div class="footer-copy">&copy; 2026 サカイデザインアトリエ &nbsp;|&nbsp; sakai.mitsuki.design@gmail.com</div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('drawer');
+    const overlay   = document.getElementById('drawer-overlay');
+    const closeBtn  = document.getElementById('drawer-close');
+    function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+    hamburger.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+  </script>
+
+  <script>
+    const PLAN_PRICES = { light: 25000, standard: 50000, data: 5000 };
+    const PLAN_LABELS = { light: 'ライトプラン (基本料金)', standard: 'スタンダードプラン (基本料金)', data: 'データ作成プラン (基本料金)' };
+
+    let currentPlan = null;
+    let imageCount = 1;
+    let photoCounts = { light: 1, medium: 1, heavy: 1 };
+    let flowDerivs = {
+      flavor: { checked: false, count: 1, label: '色違い・フレーバー違い' },
+      size:   { checked: false, count: 1, label: 'サイズバリエーション' }
+    };
+
+    // データ作成プラン時にグレーアウトする対象のラベルID一覧
+    const DISABLED_ON_DATA = ['label-illust', 'label-photo-light', 'label-photo-medium', 'label-photo-heavy', 'label-guide', 'label-source', 'label-copyright'];
+    const DISABLED_DERIV   = ['label-flavor', 'label-size'];
+
+    function selectPlanFlow(planType) {
+      currentPlan = planType;
+
+      // カードのselected状態を更新
+      ['light', 'standard', 'data'].forEach(p => {
+        document.getElementById(`card-${p}`).classList.toggle('selected', p === planType);
+      });
+
+      // ラジオボタンの同期
+      const radios = document.querySelectorAll('input[name="flow-plan"]');
+      const idx = { light: 0, standard: 1, data: 2 };
+      radios[idx[planType]].checked = true;
+
+      const isDataPlan = (planType === 'data');
+
+      // ── オプション：商品イメージ以外をグレーアウト ──
+      DISABLED_ON_DATA.forEach(labelId => {
+        const label = document.getElementById(labelId);
+        const input = label.querySelector('input[type="checkbox"]');
+        if (isDataPlan) {
+          label.classList.add('disabled');
+          input.checked = false;
+          input.disabled = true;
+        } else {
+          label.classList.remove('disabled');
+          input.disabled = false;
+        }
+      });
+
+      // ── 派生展開：全項目をグレーアウト ──
+      DISABLED_DERIV.forEach(labelId => {
+        const label = document.getElementById(labelId);
+        const input = label.querySelector('input[type="checkbox"]');
+        if (isDataPlan) {
+          label.classList.add('disabled');
+          input.checked = false;
+          input.disabled = true;
+        } else {
+          label.classList.remove('disabled');
+          input.disabled = false;
+        }
+      });
+
+      // データ作成プランの場合、派生展開ステップにも注記クラスを付与
+      const step3 = document.getElementById('step3');
+      if (isDataPlan) {
+        step3.classList.add('disabled-block');
+      } else {
+        step3.classList.remove('disabled-block');
+      }
+
+      // 派生カウンターのリセット
+      if (isDataPlan) {
+        ['flavor', 'size'].forEach(type => {
+          flowDerivs[type].checked = false;
+          flowDerivs[type].count = 1;
+          document.getElementById(`val-${type}`).textContent = 1;
+          document.getElementById(`counter-${type}`).classList.add('hidden');
+        });
+        // 商品イメージのカウンターもリセット
+        const optImage = document.getElementById('opt-image');
+        if (!optImage.checked) {
+          imageCount = 1;
+          document.getElementById('val-image').textContent = 1;
+          document.getElementById('counter-image').classList.add('hidden');
+        }
+        // 写真加工のカウンターもリセット
+        ['light', 'medium', 'heavy'].forEach(type => {
+          photoCounts[type] = 1;
+          document.getElementById(`val-photo-${type}`).textContent = 1;
+          document.getElementById(`counter-photo-${type}`).classList.add('hidden');
+        });
+      }
+
+      document.getElementById('num1').classList.add('done');
+      document.getElementById('step2').classList.remove('hidden');
+      document.getElementById('step3').classList.remove('hidden');
+      document.getElementById('summary-block').classList.remove('hidden');
+
+      calcFlowTotal();
+    }
+
+    function changeImageCount(delta) {
+      imageCount = Math.max(1, imageCount + delta);
+      document.getElementById('val-image').textContent = imageCount;
+      calcFlowTotal();
+    }
+
+    function changePhotoCount(type, delta) {
+      photoCounts[type] = Math.max(1, photoCounts[type] + delta);
+      document.getElementById(`val-photo-${type}`).textContent = photoCounts[type];
+      calcFlowTotal();
+    }
+
+    function changeDerivFlow(type, delta) {
+      if (!flowDerivs[type].checked) return;
+      flowDerivs[type].count = Math.max(1, flowDerivs[type].count + delta);
+      document.getElementById(`val-${type}`).textContent = flowDerivs[type].count;
+      calcFlowTotal();
+    }
+
+    function calcFlowTotal() {
+      if (!currentPlan) return;
+
+      const planBase = PLAN_PRICES[currentPlan];
+      let lines = [];
+      lines.push({ name: PLAN_LABELS[currentPlan], price: planBase });
+
+      let optionsPrice = 0;
+
+      const optIllust = document.getElementById('opt-illust');
+      if (currentPlan !== 'data' && optIllust.checked) {
+        optionsPrice += 5000;
+        lines.push({ name: 'オリジナルイラスト制作', price: 5000 });
+      }
+
+      // 写真加工（軽微な補正）
+      const optPhotoLight = document.getElementById('opt-photo-light');
+      if (currentPlan !== 'data' && optPhotoLight.checked) {
+        const fee = 1000 * photoCounts.light;
+        optionsPrice += fee;
+        lines.push({ name: `写真加工：軽微な補正 (×${photoCounts.light}枚)`, price: fee });
+      }
+
+      // 写真加工（合成・レタッチ）
+      const optPhotoMedium = document.getElementById('opt-photo-medium');
+      if (currentPlan !== 'data' && optPhotoMedium.checked) {
+        const fee = 3000 * photoCounts.medium;
+        optionsPrice += fee;
+        lines.push({ name: `写真加工：合成・レタッチ (×${photoCounts.medium}枚)`, price: fee });
+      }
+
+      // 写真加工（ビジュアル制作）
+      const optPhotoHeavy = document.getElementById('opt-photo-heavy');
+      if (currentPlan !== 'data' && optPhotoHeavy.checked) {
+        const fee = 10000 * photoCounts.heavy;
+        optionsPrice += fee;
+        lines.push({ name: `写真加工：ビジュアル制作 (×${photoCounts.heavy}枚)`, price: fee });
+      }
+
+      const optImage = document.getElementById('opt-image');
+      if (optImage.checked) {
+        const imageFee = 3000 * imageCount;
+        optionsPrice += imageFee;
+        lines.push({ name: `商品イメージ作成 (×${imageCount}点)`, price: imageFee });
+      }
+
+      const optGuide = document.getElementById('opt-guide');
+      if (currentPlan !== 'data' && optGuide.checked) {
+        optionsPrice += 10000;
+        lines.push({ name: 'デザインガイドライン', price: 10000 });
+      }
+
+      const optCopyright = document.getElementById('opt-copyright');
+      const optSource    = document.getElementById('opt-source');
+
+      if (currentPlan !== 'data') {
+        if (optCopyright.checked) {
+          let copyrightFee = 0;
+          if (currentPlan === 'standard') {
+            copyrightFee = Math.round((planBase / 2) * 0.6);
+          } else {
+            copyrightFee = Math.round(planBase * 0.6);
+          }
+          optionsPrice += copyrightFee;
+          lines.push({ name: '著作権完全譲渡パック (制作元データ込み)', price: copyrightFee });
+        } else if (optSource.checked) {
+          optionsPrice += 10000;
+          lines.push({ name: '制作元データ納品', price: 10000 });
+        }
+      }
+
+      let derivPriceTotal = 0;
+      if (currentPlan !== 'data') {
+        if (flowDerivs.flavor.checked) {
+          let flavorUnitFee = 0;
+          if (currentPlan === 'standard') {
+            flavorUnitFee = Math.round((planBase / 2) * 0.3);
+          } else {
+            flavorUnitFee = Math.round(planBase * 0.3);
+          }
+          const fee = flavorUnitFee * flowDerivs.flavor.count;
+          derivPriceTotal += fee;
+          lines.push({ name: `色違い・フレーバー違い (×${flowDerivs.flavor.count}種)`, price: fee });
+        }
+
+        if (flowDerivs.size.checked) {
+          let sizeUnitFee = 0;
+          if (currentPlan === 'standard') {
+            sizeUnitFee = Math.round((planBase / 2) * 0.5);
+          } else {
+            sizeUnitFee = Math.round(planBase * 0.5);
+          }
+          const fee = sizeUnitFee * flowDerivs.size.count;
+          derivPriceTotal += fee;
+          lines.push({ name: `サイズバリエーション (×${flowDerivs.size.count}種)`, price: fee });
+        }
+      }
+
+      const totalPrice = planBase + optionsPrice + derivPriceTotal;
+
+      const summaryContainer = document.getElementById('summary-lines');
+      summaryContainer.innerHTML = lines.map(l => `
+        <div class="sim-summary-line">
+          <span>・${l.name}</span>
+          <span class="s-price">¥${l.price.toLocaleString()}〜</span>
+        </div>
+      `).join('');
+
+      document.getElementById('sim-total').textContent = '¥' + totalPrice.toLocaleString() + '〜';
+
+      let simText = '【シミュレーター見積もり内訳】\n';
+      lines.forEach(l => { simText += `・${l.name}：¥${l.price.toLocaleString()}〜\n`; });
+      simText += `\n概算合計金額（税抜）：¥${totalPrice.toLocaleString()}〜`;
+
+      const ctaBtn = document.getElementById('sim-cta-btn');
+      ctaBtn.href = `../contact.html?from=package&sim=${encodeURIComponent(simText)}`;
+    }
+
+    // イベントリスナー
+    document.getElementById('opt-illust').addEventListener('change', calcFlowTotal);
+    document.getElementById('opt-guide').addEventListener('change', calcFlowTotal);
+
+    // 写真加工カウンター表示切り替え
+    ['light', 'medium', 'heavy'].forEach(type => {
+      const opt = document.getElementById(`opt-photo-${type}`);
+      const counter = document.getElementById(`counter-photo-${type}`);
+      opt.addEventListener('change', () => {
+        counter.classList.toggle('hidden', !opt.checked);
+        if (!opt.checked) {
+          photoCounts[type] = 1;
+          document.getElementById(`val-photo-${type}`).textContent = 1;
+        }
+        calcFlowTotal();
+      });
+    });
+
+    const optImage = document.getElementById('opt-image');
+    optImage.addEventListener('change', () => {
+      document.getElementById('counter-image').classList.toggle('hidden', !optImage.checked);
+      if (!optImage.checked) { imageCount = 1; document.getElementById('val-image').textContent = 1; }
+      calcFlowTotal();
+    });
+
+    const optSource    = document.getElementById('opt-source');
+    const optCopyright = document.getElementById('opt-copyright');
+    optSource.addEventListener('change', () => { if (optSource.checked) optCopyright.checked = false; calcFlowTotal(); });
+    optCopyright.addEventListener('change', () => { if (optCopyright.checked) optSource.checked = false; calcFlowTotal(); });
+
+    ['flavor', 'size'].forEach(type => {
+      const toggle  = document.getElementById(`toggle-${type}`);
+      const counter = document.getElementById(`counter-${type}`);
+      toggle.addEventListener('change', () => {
+        flowDerivs[type].checked = toggle.checked;
+        counter.classList.toggle('hidden', !toggle.checked);
+        if (!toggle.checked) {
+          flowDerivs[type].count = 1;
+          document.getElementById(`val-${type}`).textContent = 1;
+        }
+        calcFlowTotal();
+      });
+    });
+  </script>
+
+  <script src="../protect.js"></script>
+</body>
+</html>

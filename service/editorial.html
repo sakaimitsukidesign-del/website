@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noai, noimageai">
+  <title>冊子・パンフレットデザイン詳細 | サカイデザインアトリエ</title>
+  <link rel="icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@100;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="editorial.css">
+  <link rel="stylesheet" href="../protect.css">
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" class="logo-wrap">
+      <img src="../ロゴ-01.png" alt="サカイデザインアトリエ ロゴ" class="logo-img">
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="global-nav">
+    <a href="../index.html">Home</a>
+    <a href="../works/works.html">Works</a>
+    <a href="service.html" class="active">Service</a>
+    <a href="../flow.html">Flow</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+
+  <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawer-close" aria-label="閉じる">&#x2715;</button>
+    <nav class="drawer-nav">
+      <a href="../index.html">Home</a>
+      <a href="../works/works.html">Works</a>
+      <a href="service.html" class="active">Service</a>
+      <a href="../flow.html">Flow</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="service.html">Service</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">冊子・パンフレット制作</span>
+  </div>
+
+  <main class="detail-wrap">
+
+    <h1 class="page-title">冊子・パンフレット制作</h1>
+
+    <section class="detail-section">
+      <h2 class="section-title">1. 基本料金（プロジェクト単位）</h2>
+      <p class="section-lead">会社案内・学校案内・施設案内・会報誌・広報誌・ガイドブックなど、複数ページで構成される冊子のデザインを承ります。<br>
+      基本料金には表紙・裏表紙を含む4ページ分のデザイン料金が含まれています。</p>
+
+      <div class="plan-grid">
+        <div class="plan-card" id="card-light" onclick="selectPlanFlow('light')">
+          <div class="plan-header">
+            <span class="plan-name">ライトプラン</span>
+            <span class="plan-price">¥50,000〜</span>
+          </div>
+          <ul class="plan-list">
+            <li>表紙デザインラフ案：3案提案</li>
+            <li>表紙本制作：1案（ラフから1案を選択）</li>
+            <li>中面制作（ページ数に応じて加算）</li>
+            <li>無料修正：2回まで</li>
+          </ul>
+          <p class="plan-note">★ 本制作前であれば差額（¥70,000〜）にてスタンダードプランへ変更可能</p>
+        </div>
+
+        <div class="plan-card" id="card-standard" onclick="selectPlanFlow('standard')">
+          <div class="plan-header">
+            <span class="plan-name">スタンダードプラン</span>
+            <span class="plan-price">¥120,000〜</span>
+          </div>
+          <ul class="plan-list">
+            <li>表紙デザインラフ案：3案提案</li>
+            <li>表紙本制作：3案（すべての方向性を本制作で比較）</li>
+            <li>中面制作（ページ数に応じて加算）</li>
+            <li>無料修正：2回まで</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <p class="info-box-label">＜プラン切り替えについて（ライトプラン ➔ スタンダードプラン）＞</p>
+        <p>ラフ提案を見た後に「やっぱり複数本制作して見比べたい」となった場合、本制作に入る前であれば、差額（¥70,000〜）を追加することでスタンダードプランへ移行できます。</p>
+        <p class="info-box-note">本制作着手後は切り替え不可 ／ 消化済みの修正回数は引き継ぎ</p>
+      </div>
+
+      <div class="info-box" style="margin-top: 16px;">
+        <p class="info-box-label">＜ご支給いただくもの・前提条件＞</p>
+        <p>掲載テキスト ／ 写真素材 ／ 掲載資料（図表・データ等）</p>
+        <p class="info-box-note">原稿整理やライティングは別途お見積りとなります。／ 印刷会社様との直接の契約・印刷費のお支払いはクライアント様側で行っていただきます。</p>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">2. ページ制作料金</h2>
+      <p class="section-lead">基本料金には表紙・裏表紙を含む4ページ分のデザイン料金が含まれます。中面はページ数に応じて加算となります。</p>
+
+      <div class="price-note-list">
+        <div class="price-note-item">
+          <span class="price-note-label">中面制作（1ページ）</span>
+          <span class="price-note-price">¥4,000〜</span>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-bottom: 20px; background: var(--white);">
+        <p class="info-box-label" style="color: var(--orange);">ページ数の料金目安（ライトプラン）</p>
+        <table class="page-table">
+          <thead>
+            <tr>
+              <th>ページ数</th>
+              <th>料金目安</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>4ページ</td><td>¥50,000〜</td></tr>
+            <tr><td>8ページ</td><td>¥70,000〜</td></tr>
+            <tr><td>12ページ</td><td>¥90,000〜</td></tr>
+            <tr><td>16ページ</td><td>¥110,000〜</td></tr>
+            <tr><td>24ページ</td><td>¥140,000〜</td></tr>
+            <tr><td>32ページ</td><td>¥170,000〜</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">※ 内容量やレイアウト難易度により変動する場合があります。</p>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">3. 納品データについて（基本料金に内蔵）</h2>
+      <p class="section-lead">詳しくない方でも安心。用途（WEB・印刷など）をヒアリングし、最適な形式をご提案します。</p>
+
+      <ul class="dot-list">
+        <li>用途に応じて最適な形式で納品（例：PDF、PNG、JPEG など）</li>
+        <li>ホームページ、SNS、印刷物など、使用目的を伺いながら必要な形式をご提案</li>
+        <li>詳しくないクライアント様のご用途をヒアリングし、最適な形式で納品いたします</li>
+        <li>AIデータ（Illustrator形式）納品は別途オプションとなります</li>
+      </ul>
+
+      <div class="price-note-list">
+        <div class="price-note-item">
+          <span class="price-note-label">納品後の追加データ作成・仕様調整</span>
+          <span class="price-note-price">¥3,000〜</span>
+        </div>
+        <div class="price-note-item">
+          <span class="price-note-label">特殊仕様へのデータ変換・入稿対応</span>
+          <span class="price-note-price">別途見積り</span>
+        </div>
+      </div>
+      <p class="caption">※ 特殊な仕様への対応や、納品後の追加調整が必要な場合は別途お見積りとなります。</p>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">4. 追加オプション（スポット料金）</h2>
+      <p class="section-lead"></p>
+
+      <div class="option-list">
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">追加修正（3回目以降）</span>
+            <span class="option-price">¥5,000〜 / 1回</span>
+          </div>
+          <p class="option-desc">カラー変更や軽微なバランス調整などの微修正が対象。大幅な原形変更・作り直しは別途見積もり。修正内容によって変動します。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">図表・インフォグラフィック制作</span>
+            <span class="option-price">¥3,000〜 / 点</span>
+          </div>
+          <p class="option-desc">データや情報を視覚的に整理した図表・インフォグラフィックを制作します。内容の複雑さにより変動します。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">オリジナルイラスト制作</span>
+            <span class="option-price">¥5,000〜</span>
+          </div>
+          <p class="option-desc">内容に応じて変動します。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">写真加工（軽微な補正）</span>
+            <span class="option-price">¥1,000〜 / 枚</span>
+          </div>
+          <p class="option-desc">明るさ・色味の調整など、基本的な見栄えの補正を行います。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">写真加工（合成・レタッチ）</span>
+            <span class="option-price">¥3,000〜 / 枚</span>
+          </div>
+          <p class="option-desc">不要物の除去、肌補正、複数写真の組み合わせなど、難易度に応じた高度な編集を行います。</p>
+        </div>
+
+        <div class="option-item">
+          <div class="option-header">
+            <span class="option-name">写真加工（ビジュアル制作）</span>
+            <span class="option-price">¥10,000〜 / 枚</span>
+          </div>
+          <p class="option-desc">写真素材をベースにしたグラフィックアート加工や、メインビジュアルとしての大きな改変・グラフィック構築を行います。</p>
+        </div>
+
+        <div class="option-item option-item--highlight">
+          <div class="option-header">
+            <span class="option-name">AIデータ（Illustrator形式）納品</span>
+            <span class="option-price">¥10,000</span>
+          </div>
+          <p class="option-desc">印刷会社・制作会社への入稿用・社内保管用として利用できます。著作権は譲渡されません。データの改変や二次利用、再販売等については別途ご相談ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2 class="section-title">5. 派生展開・増刷対応</h2>
+      <p class="section-lead">メインデザイン確定後に、改訂版や増刷時の対応を行うためのオプションです。</p>
+
+      <div class="variation-grid">
+        <div class="variation-block">
+          <h3 class="variation-block-title">時間単位での精算（タイムチャージ）</h3>
+          <p class="variation-block-price">¥5,000〜 / 1時間</p>
+          <p class="variation-block-desc">内容更新や小規模な改訂など、複数の作業をまとめて実働時間で精算したい場合におすすめです。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section simulator-section" id="simulator-anchor">
+      <h2 class="section-title">料金シミュレーター</h2>
+      <p class="section-lead">ステップに沿ってご希望の条件を選ぶと、リアルタイムで自動見積もりの内訳が表示されます。</p>
+
+      <div class="simulator">
+
+        <div class="step-block" id="step1">
+          <div class="step-label">
+            <div class="step-num" id="num1">1</div>
+            <p class="sim-group-label" style="margin-bottom:0;">基本プランを選択</p>
+          </div>
+          <div class="sim-radio-list">
+            <label class="sim-radio-item">
+              <input type="radio" name="flow-plan" value="50000" onchange="selectPlanFlow('light')">
+              <span class="sim-radio-box"></span>
+              <span class="sim-radio-text">ライトプラン <em>¥50,000〜</em></span>
+            </label>
+            <label class="sim-radio-item">
+              <input type="radio" name="flow-plan" value="120000" onchange="selectPlanFlow('standard')">
+              <span class="sim-radio-box"></span>
+              <span class="sim-radio-text">スタンダードプラン <em>¥120,000〜</em></span>
+            </label>
+          </div>
+
+          <div class="sim-inline-counter" style="margin-top: 20px; padding-left: 0;">
+            <span class="sim-radio-text" style="font-weight: 400; margin-right: 8px;">希望ページ数：</span>
+            <button class="counter-btn" onclick="changePageCount(-2)">−</button>
+            <span class="counter-val" id="val-pages">4</span>
+            <button class="counter-btn" onclick="changePageCount(2)">+</button>
+            <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">ページ（表紙・裏表紙は基本料金に含む）</span>
+          </div>
+        </div>
+
+        <div class="step-block hidden" id="step2">
+          <div class="step-label">
+            <div class="step-num" id="num2">2</div>
+            <p class="sim-group-label" style="margin-bottom:0;">追加オプション（複数選択可）</p>
+          </div>
+          <div class="sim-check-list">
+
+            <div>
+              <label class="sim-check-item" id="label-infographic">
+                <input type="checkbox" name="flow-option" id="opt-infographic">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">図表・インフォグラフィック制作 <em>+¥3,000〜 / 点</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-infographic">
+                <button class="counter-btn" onclick="changeItemCount('infographic', -1)">−</button>
+                <span class="counter-val" id="val-infographic">1</span>
+                <button class="counter-btn" onclick="changeItemCount('infographic', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">点</span>
+              </div>
+            </div>
+
+            <label class="sim-check-item" id="label-illust">
+              <input type="checkbox" name="flow-option" id="opt-illust">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">オリジナルイラスト制作 <em>+¥5,000〜</em></span>
+            </label>
+
+            <div>
+              <label class="sim-check-item" id="label-photo-light">
+                <input type="checkbox" name="flow-option" id="opt-photo-light">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">写真加工（軽微な補正） <em>+¥1,000〜 / 枚</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-photo-light">
+                <button class="counter-btn" onclick="changePhotoCount('light', -1)">−</button>
+                <span class="counter-val" id="val-photo-light">1</span>
+                <button class="counter-btn" onclick="changePhotoCount('light', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">枚</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="sim-check-item" id="label-photo-medium">
+                <input type="checkbox" name="flow-option" id="opt-photo-medium">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">写真加工（合成・レタッチ） <em>+¥3,000〜 / 枚</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-photo-medium">
+                <button class="counter-btn" onclick="changePhotoCount('medium', -1)">−</button>
+                <span class="counter-val" id="val-photo-medium">1</span>
+                <button class="counter-btn" onclick="changePhotoCount('medium', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">枚</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="sim-check-item" id="label-photo-heavy">
+                <input type="checkbox" name="flow-option" id="opt-photo-heavy">
+                <span class="sim-check-box"></span>
+                <span class="sim-check-text">写真加工（ビジュアル制作） <em>+¥10,000〜 / 枚</em></span>
+              </label>
+              <div class="sim-inline-counter hidden" id="counter-photo-heavy">
+                <button class="counter-btn" onclick="changePhotoCount('heavy', -1)">−</button>
+                <span class="counter-val" id="val-photo-heavy">1</span>
+                <button class="counter-btn" onclick="changePhotoCount('heavy', 1)">+</button>
+                <span class="sim-radio-text" style="font-size:11px; margin-left:4px;">枚</span>
+              </div>
+            </div>
+
+            <label class="sim-check-item" id="label-ai-data">
+              <input type="checkbox" name="flow-option" id="opt-ai-data">
+              <span class="sim-check-box"></span>
+              <span class="sim-check-text">AIデータ（Illustrator形式）納品 <em>+¥10,000</em></span>
+            </label>
+
+          </div>
+        </div>
+
+        <div class="step-block hidden" id="summary-block" style="margin-bottom:0;">
+          <div class="sim-result" style="display:block; background:var(--white); padding:28px 24px;">
+            <p class="sim-group-label" style="border-bottom: 0.5px solid var(--border); padding-bottom:10px; margin-bottom:14px;">見積もり内訳</p>
+            <div class="sim-summary-lines" id="summary-lines"></div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:18px; padding-top:14px; border-top:1px dashed var(--border);">
+              <span class="sim-result-label" style="font-weight:400;">お見積り目安 (税抜)</span>
+              <span class="sim-result-price" id="sim-total">¥0〜</span>
+            </div>
+          </div>
+
+          <p class="sim-caption" style="margin-top:12px;">※ 表示金額はあくまで目安です。内容・ボリュームによって変動する場合があります。詳細はお問い合わせください。</p>
+
+          <div class="sim-cta">
+            <a href="../contact.html" class="sim-cta-btn" id="sim-cta-btn">この内容でお問い合わせ・ご相談</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-sns">
+      <a href="https://www.instagram.com/sakaidesignatelier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="../インスタグラム.png" alt="Instagram">
+      </a>
+    </div>
+    <div class="footer-logo">サカイデザインアトリエ</div>
+    <div class="footer-copy">&copy; 2026 サカイデザインアトリエ &nbsp;|&nbsp; sakai.mitsuki.design@gmail.com</div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('drawer');
+    const overlay   = document.getElementById('drawer-overlay');
+    const closeBtn  = document.getElementById('drawer-close');
+    function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open'); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+    hamburger.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+  </script>
+
+  <script>
+    const PLAN_PRICES = { light: 50000, standard: 120000 };
+    const PLAN_LABELS = { light: 'ライトプラン (基本料金)', standard: 'スタンダードプラン (基本料金)' };
+
+    let currentPlan = null;
+
+    // ページ数管理（最低4ページ、2ページ単位）
+    let pageCount = 4;
+    const BASE_PAGES = 4; // 表紙・裏表紙含む基本
+    const PAGE_INNER_PRICE = 4000; // 中面1ページあたり
+
+    // 各写真加工の枚数管理
+    let photoCounts = { light: 1, medium: 1, heavy: 1 };
+
+    // インフォグラフィック点数
+    let itemCounts = { infographic: 1 };
+
+    function selectPlanFlow(planType) {
+      currentPlan = planType;
+
+      ['light', 'standard'].forEach(p => {
+        const card = document.getElementById(`card-${p}`);
+        if (card) card.classList.toggle('selected', p === planType);
+      });
+
+      const radios = document.querySelectorAll('input[name="flow-plan"]');
+      const idx = { light: 0, standard: 1 };
+      if (radios[idx[planType]]) radios[idx[planType]].checked = true;
+
+      document.getElementById('num1').classList.add('done');
+      document.getElementById('step2').classList.remove('hidden');
+      document.getElementById('summary-block').classList.remove('hidden');
+
+      calcFlowTotal();
+    }
+
+    function changePageCount(delta) {
+      pageCount = Math.max(4, pageCount + delta);
+      document.getElementById('val-pages').textContent = pageCount;
+      calcFlowTotal();
+    }
+
+    function changePhotoCount(type, delta) {
+      photoCounts[type] = Math.max(1, photoCounts[type] + delta);
+      document.getElementById(`val-photo-${type}`).textContent = photoCounts[type];
+      calcFlowTotal();
+    }
+
+    function changeItemCount(type, delta) {
+      itemCounts[type] = Math.max(1, itemCounts[type] + delta);
+      document.getElementById(`val-${type}`).textContent = itemCounts[type];
+      calcFlowTotal();
+    }
+
+    function calcFlowTotal() {
+      if (!currentPlan) return;
+
+      const planBase = PLAN_PRICES[currentPlan];
+      let lines = [];
+      // 基本料金は「〜」がつく
+      lines.push({ name: PLAN_LABELS[currentPlan], price: planBase, hasWave: true });
+
+      // 【修正ポイント1】基本料金に4ページ分含まれるため、pageCountから4を引く
+      let innerPagePrice = 0;
+      const innerPages = Math.max(0, pageCount - 4); 
+      if (innerPages > 0) {
+        innerPagePrice = innerPages * PAGE_INNER_PRICE;
+        lines.push({ name: `中面制作 (${innerPages}ページ分加算)`, price: innerPagePrice, hasWave: true });
+      }
+
+      let optionsPrice = 0;
+
+      // 図表・インフォグラフィック
+      const optInfographic = document.getElementById('opt-infographic');
+      if (optInfographic && optInfographic.checked) {
+        const fee = 3000 * itemCounts.infographic;
+        optionsPrice += fee;
+        lines.push({ name: `図表・インフォグラフィック制作 (×${itemCounts.infographic}点)`, price: fee, hasWave: true });
+      }
+
+      // イラスト制作
+      const optIllust = document.getElementById('opt-illust');
+      if (optIllust && optIllust.checked) {
+        optionsPrice += 5000;
+        lines.push({ name: 'オリジナルイラスト制作', price: 5000, hasWave: true });
+      }
+
+      // 写真加工（軽微）
+      const optPhotoLight = document.getElementById('opt-photo-light');
+      if (optPhotoLight && optPhotoLight.checked) {
+        const fee = 1000 * photoCounts.light;
+        optionsPrice += fee;
+        lines.push({ name: `写真加工：軽微な補正 (×${photoCounts.light}枚)`, price: fee, hasWave: true });
+      }
+
+      // 写真加工（合成・レタッチ）
+      const optPhotoMedium = document.getElementById('opt-photo-medium');
+      if (optPhotoMedium && optPhotoMedium.checked) {
+        const fee = 3000 * photoCounts.medium;
+        optionsPrice += fee;
+        lines.push({ name: `写真加工：合成・レタッチ (×${photoCounts.medium}枚)`, price: fee, hasWave: true });
+      }
+
+      // 写真加工（ビジュアル制作）
+      const optPhotoHeavy = document.getElementById('opt-photo-heavy');
+      if (optPhotoHeavy && optPhotoHeavy.checked) {
+        const fee = 10000 * photoCounts.heavy;
+        optionsPrice += fee;
+        lines.push({ name: `写真加工：ビジュアル制作 (×${photoCounts.heavy}枚)`, price: fee, hasWave: true });
+      }
+
+      // AIデータ納品（一律固定料金のため hasWave: false）
+      const optAiData = document.getElementById('opt-ai-data');
+      if (optAiData && optAiData.checked) {
+        optionsPrice += 10000;
+        lines.push({ name: 'AIデータ（Illustrator形式）納品', price: 10000, hasWave: false });
+      }
+
+      const totalPrice = planBase + innerPagePrice + optionsPrice;
+
+      // 【修正ポイント3】内訳HTML生成（hasWaveの真偽値で「〜」の有無をコントロール）
+      const summaryContainer = document.getElementById('summary-lines');
+      summaryContainer.innerHTML = lines.map(l => `
+        <div class="sim-summary-line">
+          <span>・${l.name}</span>
+          <span class="s-price">¥${l.price.toLocaleString()}${l.hasWave ? '〜' : ''}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('sim-total').textContent = '¥' + totalPrice.toLocaleString() + '〜';
+
+      // メールフォーム連携用テキスト
+      let simText = '【シミュレーター見積もり内訳】\n';
+      simText += `・希望ページ数：${pageCount}ページ\n`;
+      lines.forEach(l => { simText += `・${l.name}：¥${l.price.toLocaleString()}${l.hasWave ? '〜' : ''}\n`; });
+      simText += `\n概算合計金額（税抜）：¥${totalPrice.toLocaleString()}〜`;
+
+      const ctaBtn = document.getElementById('sim-cta-btn');
+      // from=editorial だけを綺麗に残し、simパラメーターと一緒に渡します
+      ctaBtn.href = `../contact.html?from=editorial&sim=${encodeURIComponent(simText)}`;  
+    }
+
+    // イベントリスナー登録
+    document.getElementById('opt-illust').addEventListener('change', calcFlowTotal);
+    document.getElementById('opt-ai-data').addEventListener('change', calcFlowTotal);
+
+    // インフォグラフィックカウンター表示切り替え
+    const optInfographic = document.getElementById('opt-infographic');
+    const counterInfographic = document.getElementById('counter-infographic');
+    optInfographic.addEventListener('change', () => {
+      counterInfographic.classList.toggle('hidden', !optInfographic.checked);
+      if (!optInfographic.checked) {
+        itemCounts.infographic = 1;
+        document.getElementById('val-infographic').textContent = 1;
+      }
+      calcFlowTotal();
+    });
+
+    // 写真加工カウンター表示切り替え
+    ['light', 'medium', 'heavy'].forEach(type => {
+      const opt = document.getElementById(`opt-photo-${type}`);
+      const counter = document.getElementById(`counter-photo-${type}`);
+      opt.addEventListener('change', () => {
+        counter.classList.toggle('hidden', !opt.checked);
+        if (!opt.checked) {
+          photoCounts[type] = 1;
+          document.getElementById(`val-photo-${type}`).textContent = 1;
+        }
+        calcFlowTotal();
+      });
+    });
+  </script>
+
+  <script src="../protect.js"></script>
+</body>
+</html>
