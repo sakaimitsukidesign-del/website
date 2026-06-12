@@ -119,102 +119,61 @@ nav a.active { background: rgba(0,0,0,0.15); }
   background: var(--white);
   display: flex;
   gap: 64px;
-  padding: 64px 80px 88px;
-  align-items: flex-start;
+  padding: 64px 80px 48px;
+  align-items: stretch;
 }
 
 /* ── GALLERY ── */
 .gallery {
-  flex: 0 0 380px;
+  flex: 0 0 520px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
+  background: var(--white);
 }
 
-/* メイン画像エリア */
+/* メイン画像 */
 .gallery-main {
-  position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
   background: var(--thumb-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.gallery-main-inner {
-  width: 100%;
-  height: 100%;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
 }
 
-.gallery-main-inner img {
+.gallery-main img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.18s ease;
+  height: auto;
+  display: block;
 }
 
-/* 三角ボタン */
-.gallery-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: rgba(255,255,255,0.82);
-  border: none;
-  width: 36px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: var(--ink);
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  line-height: 1;
+/* メイン画像の下の白背景エリア */
+.gallery-fill {
+  flex: 1;
+  background: var(--white);
 }
 
-.gallery-arrow:hover {
-  background: rgba(255,255,255,1);
-  color: var(--orange);
-}
-
-.gallery-arrow--prev { left: 0; }
-.gallery-arrow--next { right: 0; }
-
-/* サムネイル列 */
+/* 下段：6枚グリッド（3列×2行、上段と同じ余白） */
 .gallery-thumbs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+  background: var(--white);
+  padding: 0 80px 88px;
 }
 
 .thumb {
-  flex: 1;
-  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--thumb-bg);
-  border: 1.5px solid transparent;
-  padding: 0;
-  cursor: pointer;
-  transition: border-color 0.2s;
+}
+
+.thumb--white {
+  background: var(--white);
 }
 
 .thumb img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
-  transition: opacity 0.2s;
-}
-
-.thumb:hover img { opacity: 0.8; }
-
-.thumb.active {
-  border-color: var(--orange);
 }
 
 /* ── WORK INFO ── */
@@ -432,21 +391,23 @@ footer {
     opacity: 1;
   }
 
-  /* breadcrumb */
-  .breadcrumb {
-    padding: 12px 24px;
-  }
+  .breadcrumb { padding: 12px 24px; }
 
-  /* 縦並びに */
   .work-detail {
     flex-direction: column;
-    padding: 32px 24px 64px;
+    padding: 32px 24px 36px;
     gap: 36px;
   }
 
   .gallery {
     flex: none;
     width: 100%;
+  }
+
+  .gallery-thumbs {
+    grid-template-columns: 1fr;
+    padding: 0 24px 64px;
+    gap: 6px;
   }
 
   .footer-sns { left: 20px; }
