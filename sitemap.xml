@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!--  created with free sitemap generation system www.sitemapxml.jp  --> 
+<url>
+  <loc>https://sakaidesignatelier.com/</loc>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/works/works</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/service</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/flow</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/about</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/contact</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/works/otsugetto</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/works/kouenkai</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/logo</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/package</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/poster</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/flyer</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/leaflet</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/editorial</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/infographic</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/service/card</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/works/service.html</loc>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/contact?from=package</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/contact?from=poster</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/contact?from=flyer</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/contact?from=leaflet</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/contact?from=infographic</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://sakaidesignatelier.com/contact?from=card</loc>
+  <priority>0.6</priority>
+</url>
+
+</urlset>
