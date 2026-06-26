@@ -215,7 +215,7 @@ nav a:hover { background: rgba(0,0,0,0.12); }
 /* サムネイル */
 .home-work-thumb {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #ebebeb;
   display: flex;
