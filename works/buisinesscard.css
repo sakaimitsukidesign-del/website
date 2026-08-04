@@ -485,16 +485,20 @@ footer {
     aspect-ratio: 4 / 3;
   }
 
-  .hero-catch {
-    writing-mode: horizontal-tb;  /* スマホは横書きに切り替え */
-    white-space: normal;           /* 折り返しは自然に任せる */
+   .hero-catch {
+    writing-mode: horizontal-tb;
+    white-space: normal;
     left: 50%;
     right: auto;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.8;
     padding: 14px 18px;
-    max-width: 70%;
+    max-width: 80%;
     text-align: center;
+   }
+
+    .hero-break {
+    display: block;   /* スマホでは強制改行を有効化 */
   }
 
   /* 縦並びに */
