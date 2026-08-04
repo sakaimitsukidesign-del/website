@@ -482,12 +482,12 @@ footer {
 
   /* ヒーローバナー（スマホは正方形に近い比率＋キャッチコピー縮小） */
   .hero-banner {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4/ 3;
   }
 
    .hero-catch {
     writing-mode: horizontal-tb;
-    white-space: normal;
+    white-space: 100;
     left: 50%;
     right: auto;
     font-size: 13px;
